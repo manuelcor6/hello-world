@@ -203,6 +203,25 @@ body {
   flex: 1;
 }
 
+.kit-price {
+  margin-top: 12px;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.kit-old {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  text-decoration: line-through;
+}
+
+.kit-new {
+  color: var(--accent-dark);
+  font-size: 1.15rem;
+  font-weight: 800;
+}
+
 .kit-btn {
   margin-top: 14px;
   display: block;
