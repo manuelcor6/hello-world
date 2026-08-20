@@ -1,18 +1,110 @@
 <!DOCTYPE html>
-
-<html>
+<html lang="es">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-  <title>my-first-website</title>
-  <LINK href="styles.css" rel="stylesheet" type="text/css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Oh Yes | Accesos rápidos</title>
+  <meta name="description" content="Todos los productos y canales de Oh Yes en un solo lugar. Encuentra lo que buscas más rápido." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link href="styles.css" rel="stylesheet" type="text/css" />
 </head>
-
 <body>
 
-<img src="https://octodex.github.com/images/daftpunktocat-thomas.gif" id="octocat" alt="octocat-gif" />
+  <main class="page">
+    <header class="hero">
+      <div class="avatar" aria-hidden="true">OY</div>
+      <h1>Oh Yes</h1>
+      <p class="tagline">Tu tienda de confianza. Elige abajo lo que buscas 👇</p>
+      <div class="trust-badges">
+        <span class="badge">✅ Compra segura</span>
+        <span class="badge">🚚 Envíos a todo el país</span>
+        <span class="badge">💬 Atención personalizada</span>
+      </div>
+    </header>
 
-<!-- Change this code here by copy and pasting your template on line 15 -->
-<p>Welcome to your first GitHub Pages website!</p>
+    <section class="links" aria-label="Accesos rápidos">
+
+      <a class="link-card featured" href="https://ohyes.com.co" target="_blank" rel="noopener">
+        <span class="icon">🛍️</span>
+        <span class="text">
+          <strong>Ver catálogo completo</strong>
+          <small>Todos los productos en nuestra web</small>
+        </span>
+        <span class="arrow">→</span>
+      </a>
+
+      <a class="link-card" href="https://ohyes.com.co/productos/nuevos" target="_blank" rel="noopener">
+        <span class="icon">✨</span>
+        <span class="text">
+          <strong>Novedades</strong>
+          <small>Lo último que llegó a la tienda</small>
+        </span>
+        <span class="arrow">→</span>
+      </a>
+
+      <a class="link-card" href="https://ohyes.com.co/productos/ofertas" target="_blank" rel="noopener">
+        <span class="icon">🔥</span>
+        <span class="text">
+          <strong>Ofertas y descuentos</strong>
+          <small>Aprovecha antes de que se acaben</small>
+        </span>
+        <span class="arrow">→</span>
+      </a>
+
+      <a class="link-card" href="https://ohyes.com.co/categorias" target="_blank" rel="noopener">
+        <span class="icon">🗂️</span>
+        <span class="text">
+          <strong>Categorías</strong>
+          <small>Explora por tipo de producto</small>
+        </span>
+        <span class="arrow">→</span>
+      </a>
+
+      <a class="link-card" href="https://wa.me/573000000000" target="_blank" rel="noopener">
+        <span class="icon">💬</span>
+        <span class="text">
+          <strong>Escríbenos por WhatsApp</strong>
+          <small>Resolvemos tus dudas al instante</small>
+        </span>
+        <span class="arrow">→</span>
+      </a>
+
+      <a class="link-card" href="https://ohyes.com.co/rastreo" target="_blank" rel="noopener">
+        <span class="icon">📦</span>
+        <span class="text">
+          <strong>Rastrea tu pedido</strong>
+          <small>Consulta el estado de tu compra</small>
+        </span>
+        <span class="arrow">→</span>
+      </a>
+
+      <a class="link-card" href="https://ohyes.com.co/contacto" target="_blank" rel="noopener">
+        <span class="icon">📩</span>
+        <span class="text">
+          <strong>Contáctanos</strong>
+          <small>PQR, cambios y devoluciones</small>
+        </span>
+        <span class="arrow">→</span>
+      </a>
+
+    </section>
+
+    <section class="socials" aria-label="Redes sociales">
+      <a href="https://instagram.com/ohyes.com.co" target="_blank" rel="noopener" aria-label="Instagram">📷</a>
+      <a href="https://facebook.com/ohyes.com.co" target="_blank" rel="noopener" aria-label="Facebook">📘</a>
+      <a href="https://tiktok.com/@ohyes.com.co" target="_blank" rel="noopener" aria-label="TikTok">🎵</a>
+    </section>
+
+    <footer class="footer">
+      <p>© <span id="year"></span> Oh Yes · <a href="https://ohyes.com.co" target="_blank" rel="noopener">ohyes.com.co</a></p>
+    </footer>
+  </main>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 
 </body>
 </html>
