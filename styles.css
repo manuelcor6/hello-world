@@ -32,6 +32,10 @@ body {
   align-items: center;
 }
 
+.page:has(.kit-grid) {
+  max-width: 900px;
+}
+
 .hero {
   text-align: center;
   margin-bottom: 28px;
@@ -145,6 +149,108 @@ body {
 .link-card.featured small,
 .link-card.featured .arrow {
   color: rgba(255, 255, 255, 0.85);
+}
+
+.kits {
+  width: 100%;
+  margin-top: 36px;
+  text-align: center;
+}
+
+.kits h2 {
+  font-size: 1.4rem;
+  color: var(--accent-dark);
+}
+
+.section-sub {
+  margin-top: 6px;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+.kit-grid {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+  text-align: left;
+}
+
+.kit-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow);
+}
+
+.kit-card.featured {
+  border-color: var(--accent);
+  background: linear-gradient(180deg, #fff 0%, #fff3e6 100%);
+}
+
+.kit-tag {
+  align-self: flex-start;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 999px;
+  margin-bottom: 10px;
+}
+
+.kit-tag.offer {
+  background: #ffe1d6;
+  color: #c23d00;
+}
+
+.kit-tag.premium {
+  background: #fff1cc;
+  color: #a86f00;
+}
+
+.kit-tag.rotate {
+  background: #e4f3ff;
+  color: #0b6fad;
+}
+
+.kit-card h3 {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.kit-desc {
+  margin-top: 6px;
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  flex: 1;
+}
+
+.kit-price {
+  margin-top: 14px;
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--accent-dark);
+}
+
+.kit-btn {
+  margin-top: 12px;
+  display: block;
+  text-align: center;
+  background: var(--accent);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.85rem;
+  padding: 10px 14px;
+  border-radius: 10px;
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.kit-btn:hover {
+  background: var(--accent-dark);
+  transform: translateY(-1px);
 }
 
 .socials {
