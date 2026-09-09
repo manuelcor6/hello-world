@@ -400,11 +400,26 @@
 
     <!-- Selector de Tipo de Pareja -->
     <div id="selectionScreen" class="selector-section">
-      <h2>¿Qué tipo de pareja eres?</h2>
-      <div class="pareja-selector">
-        <button class="pareja-btn" onclick="setParejaType('hetero')">👨‍👩 Heterosexual</button>
-        <button class="pareja-btn" onclick="setParejaType('lgbtq')">🏳️‍🌈 LGBTQ+</button>
-        <button class="pareja-btn" onclick="setParejaType('gay')">👨‍❤️‍👨 Gay</button>
+      <h2>Selecciona los jugadores</h2>
+
+      <div style="margin-bottom: 30px;">
+        <h3 style="color: #ff1493; margin-bottom: 15px;">👫 Pareja</h3>
+        <div class="pareja-selector">
+          <button class="pareja-btn" onclick="setParejaType('mujer-mujer')">👩‍👩 Mujer + Mujer</button>
+          <button class="pareja-btn" onclick="setParejaType('hombre-hombre')">👨‍👨 Hombre + Hombre</button>
+          <button class="pareja-btn" onclick="setParejaType('hombre-mujer')">👨‍👩 Hombre + Mujer</button>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin: 30px 0; font-size: 1.2em; color: #999;">— O —</div>
+
+      <div>
+        <h3 style="color: #ff1493; margin-bottom: 15px;">🎉 Juego Entre Varios</h3>
+        <div style="text-align: center;">
+          <label for="playerCount" style="font-size: 1.1em; color: #333; margin-right: 10px;">¿Cuántos jugadores?</label>
+          <input type="number" id="playerCount" min="3" max="10" value="3" style="width: 80px; padding: 10px; font-size: 1em; border: 2px solid #ff1493; border-radius: 8px;">
+          <button class="pareja-btn" onclick="setGroupGame()" style="margin-left: 10px;">Jugar en Grupo 🎲</button>
+        </div>
       </div>
     </div>
 
@@ -478,103 +493,136 @@
 
   <script>
     let parejaType = null;
+    let playerCount = null;
 
     // Contenido del juego basado en tipo de pareja
     const gameContent = {
-      hetero: {
+      'mujer-mujer': {
         wheel: [
-          { challenge: "Ella lo provoca con un striptease lento mientras él observa", product: 'noche-pareja' },
-          { challenge: "Él la masajea con lubricante íntimo mientras susurra algo sucio al oído", product: 'masaje' },
-          { challenge: "Usa el vibrador juntos mientras se besan apasionadamente", product: 'placer-femenino' },
-          { challenge: "Ella toma el control y juega con el anillo vibrador en él", product: 'placer-masculino' },
-          { challenge: "Juegan con los dados eróticos y siguen el reto que sale", product: 'noche-pareja' },
-          { challenge: "Ella lo acaricia lentamente mientras él le susurra fantasías", product: 'exploración-anal' },
-          { challenge: "Usen lubricante de frío-calor y experimenten nuevas sensaciones", product: 'masaje' },
-          { challenge: "Él controla el vibrador por app mientras ella no ve", product: 'juguete-app' },
-          { challenge: "Fantasía: Ella se viste sexy y actúan un encuentro casual", product: 'fantasia' },
-          { challenge: "Exploración: Inicien juntos con lubricante anal especial", product: 'exploración-anal' }
+          { challenge: "Una provoca a la otra con un striptease mientras bailan", product: 'noche-pareja' },
+          { challenge: "Masajea a tu pareja con lubricante íntimo aromático", product: 'masaje' },
+          { challenge: "Usen juntas el vibrador de alta intensidad", product: 'placer-femenino' },
+          { challenge: "Datos eróticos para parejas: sigan el reto que sale", product: 'noche-pareja' },
+          { challenge: "Lubricante anal para exploración segura juntas", product: 'exploración-anal' },
+          { challenge: "Controlen el vibrador con app entre ustedes", product: 'juguete-app' },
+          { challenge: "Role play: inventan una fantasía y la actúan", product: 'fantasia' },
+          { challenge: "Bondage de confianza: aten y desaten con cuidado", product: 'bondage-inicial' },
+          { challenge: "Masaje corporal largo con aceite aromático", product: 'masaje' },
+          { challenge: "Lubricante frío-calor: experimenten sensaciones nuevas", product: 'masaje' }
         ],
         dice: [
-          { scenario: 'Besos + Provocación', product: 'noche-pareja' },
-          { scenario: 'Masaje + Lubricante', product: 'masaje' },
-          { scenario: 'Vibrador + Variedad', product: 'placer-femenino' },
-          { scenario: 'Anillo + Pasión', product: 'placer-masculino' },
-          { scenario: 'Anal + Seguridad', product: 'exploración-anal' },
-          { scenario: 'App + Sorpresa', product: 'juguete-app' }
+          { scenario: 'Besos + Caricias apasionadas', product: 'noche-pareja' },
+          { scenario: 'Masaje + Relajación total', product: 'masaje' },
+          { scenario: 'Vibrador + Variedad de ritmos', product: 'placer-femenino' },
+          { scenario: 'Exploración + Seguridad', product: 'exploración-anal' },
+          { scenario: 'Fantasía + Riesgo calculado', product: 'fantasia' },
+          { scenario: 'Bondage + Confianza mutua', product: 'bondage-inicial' }
         ],
         cards: [
-          { text: 'Juega con lubricante frío-calor', product: 'masaje' },
-          { text: 'Usa el vibrador juntos', product: 'placer-femenino' },
+          { text: 'Masaje sensual con aceite', product: 'masaje' },
+          { text: 'Vibrador juntas a ritmo', product: 'placer-femenino' },
+          { text: 'Exploración anal con cuidado', product: 'exploración-anal' },
+          { text: 'Dados eróticos para parejas', product: 'noche-pareja' },
+          { text: 'Control remoto a distancia', product: 'juguete-app' },
+          { text: 'Fantasía romántica cumplida', product: 'fantasia' },
+          { text: 'Bondage de confianza', product: 'bondage-inicial' },
+          { text: 'Lubricante especial frío-calor', product: 'masaje' }
+        ]
+      },
+      'hombre-hombre': {
+        wheel: [
+          { challenge: "Uno provoca al otro con striptease sexy", product: 'noche-pareja' },
+          { challenge: "Masaje apasionado con lubricante íntimo de calidad", product: 'masaje' },
+          { challenge: "Anillo vibrador para máxima sensación conjunta", product: 'placer-masculino' },
+          { challenge: "Retardante: control y resistencia sin prisa", product: 'placer-masculino' },
+          { challenge: "Lubricante anal premium para exploración segura", product: 'exploración-anal' },
+          { challenge: "Control por app: uno sorprende al otro a distancia", product: 'juguete-app' },
+          { challenge: "Role play intenso: actúen una fantasía juntos", product: 'fantasia' },
+          { challenge: "Bondage: aten y desaten con máxima confianza", product: 'bondage-inicial' },
+          { challenge: "Datos eróticos gay: sigan cada reto", product: 'noche-pareja' },
+          { challenge: "Masaje anal: exploren juntos sensaciones nuevas", product: 'exploración-anal' }
+        ],
+        dice: [
+          { scenario: 'Besos + Control passion', product: 'noche-pareja' },
+          { scenario: 'Masaje + Ritmo lento', product: 'masaje' },
+          { scenario: 'Anillo + Intensidad máxima', product: 'placer-masculino' },
+          { scenario: 'Retardante + Resistencia', product: 'placer-masculino' },
+          { scenario: 'Anal + Lubricante especial', product: 'exploración-anal' },
+          { scenario: 'Bondage + Confianza total', product: 'bondage-inicial' }
+        ],
+        cards: [
+          { text: 'Masaje intenso', product: 'masaje' },
+          { text: 'Anillo vibrador para dos', product: 'placer-masculino' },
+          { text: 'Retardante de lujo', product: 'placer-masculino' },
+          { text: 'Exploración anal segura', product: 'exploración-anal' },
+          { text: 'Dados eróticos gay', product: 'noche-pareja' },
+          { text: 'Control remoto sorpresa', product: 'juguete-app' },
+          { text: 'Bondage sensual', product: 'bondage-inicial' },
+          { text: 'Fantasía cumplida juntos', product: 'fantasia' }
+        ]
+      },
+      'hombre-mujer': {
+        wheel: [
+          { challenge: "Ella lo provoca con striptease lento mientras él observa", product: 'noche-pareja' },
+          { challenge: "Él la masajea con lubricante íntimo mientras susurra al oído", product: 'masaje' },
+          { challenge: "Usa el vibrador juntos mientras se besan apasionadamente", product: 'placer-femenino' },
+          { challenge: "Ella toma el control del anillo vibrador en él", product: 'placer-masculino' },
+          { challenge: "Dados eróticos: sigan cada reto que sale", product: 'noche-pareja' },
+          { challenge: "Ella lo acaricia lentamente mientras él susurra fantasías", product: 'exploración-anal' },
+          { challenge: "Lubricante frío-calor: experimenten juntos sensaciones nuevas", product: 'masaje' },
+          { challenge: "Él controla el vibrador por app mientras ella no ve", product: 'juguete-app' },
+          { challenge: "Role play: ella se viste sexy y actúan un encuentro casual", product: 'fantasia' },
+          { challenge: "Exploración: lubricante anal especial y máxima confianza", product: 'exploración-anal' }
+        ],
+        dice: [
+          { scenario: 'Besos + Provocación mutua', product: 'noche-pareja' },
+          { scenario: 'Masaje + Lubricante especial', product: 'masaje' },
+          { scenario: 'Vibrador + Ritmo variado', product: 'placer-femenino' },
+          { scenario: 'Anillo + Pasión sin freno', product: 'placer-masculino' },
+          { scenario: 'Anal + Máxima seguridad', product: 'exploración-anal' },
+          { scenario: 'App + Sorpresa inesperada', product: 'juguete-app' }
+        ],
+        cards: [
+          { text: 'Lubricante frío-calor', product: 'masaje' },
+          { text: 'Vibrador juntos', product: 'placer-femenino' },
           { text: 'Ella toma el control', product: 'placer-masculino' },
-          { text: 'Exploren juntos', product: 'exploración-anal' },
-          { text: 'Dados eróticos', product: 'noche-pareja' },
-          { text: 'Control por app', product: 'juguete-app' },
+          { text: 'Exploración anal segura', product: 'exploración-anal' },
+          { text: 'Dados eróticos hetero', product: 'noche-pareja' },
+          { text: 'Vibrador con control remoto', product: 'juguete-app' },
           { text: 'Noche de fantasía', product: 'fantasia' },
           { text: 'Bondage inicial', product: 'bondage-inicial' }
         ]
       },
-      lgbtq: {
+      'grupo': {
         wheel: [
-          { challenge: "Uno provoca al otro con un striptease mientras bailan", product: 'noche-pareja' },
-          { challenge: "Masajea a tu pareja con lubricante aromático y cálido", product: 'masaje' },
-          { challenge: "Usen juntos el vibrador de alta intensidad", product: 'placer-femenino' },
-          { challenge: "Anillo vibrador para ambos mientras se besan", product: 'placer-masculino' },
-          { challenge: "Dados eróticos con penitencias divertidas", product: 'noche-pareja' },
-          { challenge: "Lubricante anal para exploración juntos", product: 'exploración-anal' },
-          { challenge: "Ambos controlen el vibrador con la app", product: 'juguete-app' },
-          { challenge: "Role play: inventan una fantasía y la actúan", product: 'fantasia' },
-          { challenge: "Bondage divertido y sensual juntos", product: 'bondage-inicial' },
-          { challenge: "Masaje corporal largo y sensual con aceite", product: 'masaje' }
+          { challenge: "Todos bailan sensualmente en círculo", product: 'noche-pareja' },
+          { challenge: "Ronda de masajes: cada uno masajea al siguiente", product: 'masaje' },
+          { challenge: "Todos juegan con los datos eróticos de grupo", product: 'noche-pareja' },
+          { challenge: "Ronda de verdad o desafío picante", product: 'fantasia' },
+          { challenge: "Todos se dan masaje en círculo", product: 'masaje' },
+          { challenge: "Datos de grupo: desafíos para parejas dentro del grupo", product: 'noche-pareja' },
+          { challenge: "Juego de roles en grupo: actúan una escena juntos", product: 'fantasia' },
+          { challenge: "Todos experimentan con lubricante aromático", product: 'masaje' },
+          { challenge: "Carrera de verdades atrevidas en círculo", product: 'fantasia' },
+          { challenge: "Desafío de sensibilidad: con los ojos vendados", product: 'masaje' }
         ],
         dice: [
-          { scenario: 'Besos + Caricias', product: 'noche-pareja' },
-          { scenario: 'Masaje + Relajación', product: 'masaje' },
-          { scenario: 'Vibrador + Diversión', product: 'placer-femenino' },
-          { scenario: 'Anillo + Pasión', product: 'placer-masculino' },
-          { scenario: 'Exploración + Confianza', product: 'exploración-anal' },
-          { scenario: 'Fantasía + Riesgo', product: 'fantasia' }
+          { scenario: 'Baile sensual grupal', product: 'noche-pareja' },
+          { scenario: 'Ronda de masajes', product: 'masaje' },
+          { scenario: 'Juego de atrevimientos', product: 'fantasia' },
+          { scenario: 'Datos eróticos de grupo', product: 'noche-pareja' },
+          { scenario: 'Verdad o desafío picante', product: 'fantasia' },
+          { scenario: 'Experimentación en grupo', product: 'masaje' }
         ],
         cards: [
-          { text: 'Masaje sensual completo', product: 'masaje' },
-          { text: 'Vibrador juntos', product: 'placer-femenino' },
-          { text: 'Exploración anal segura', product: 'exploración-anal' },
-          { text: 'Dados eróticos', product: 'noche-pareja' },
-          { text: 'Control remoto sorpresa', product: 'juguete-app' },
-          { text: 'Fantasía juntos', product: 'fantasia' },
-          { text: 'Bondage de confianza', product: 'bondage-inicial' },
-          { text: 'Lubricante especial', product: 'masaje' }
-        ]
-      },
-      gay: {
-        wheel: [
-          { challenge: "Uno provoca al otro con un striptease sexy", product: 'noche-pareja' },
-          { challenge: "Masaje apasionado con lubricante íntimo", product: 'masaje' },
-          { challenge: "Anillo vibrador para máxima sensación", product: 'placer-masculino' },
-          { challenge: "Retardante y pasión: control y resistencia", product: 'placer-masculino' },
-          { challenge: "Lubricante anal de máxima calidad y seguridad", product: 'exploración-anal' },
-          { challenge: "Control por app: uno sorprende al otro", product: 'juguete-app' },
-          { challenge: "Role play intenso con dados eróticos", product: 'noche-pareja' },
-          { challenge: "Bondage y control: confianza al máximo", product: 'bondage-inicial' },
-          { challenge: "Masaje profundo y sensaciones nuevas", product: 'masaje' },
-          { challenge: "Fantasía cumplida: actúan juntos", product: 'fantasia' }
-        ],
-        dice: [
-          { scenario: 'Besos + Control', product: 'noche-pareja' },
-          { scenario: 'Masaje + Pasión', product: 'masaje' },
-          { scenario: 'Anillo + Intensidad', product: 'placer-masculino' },
-          { scenario: 'Retardante + Resistencia', product: 'placer-masculino' },
-          { scenario: 'Anal + Lubricante', product: 'exploración-anal' },
-          { scenario: 'Bondage + Confianza', product: 'bondage-inicial' }
-        ],
-        cards: [
-          { text: 'Masaje intenso', product: 'masaje' },
-          { text: 'Anillo vibrador', product: 'placer-masculino' },
-          { text: 'Retardante premium', product: 'placer-masculino' },
-          { text: 'Exploración anal segura', product: 'exploración-anal' },
-          { text: 'Dados eróticos gay', product: 'noche-pareja' },
-          { text: 'Control remoto', product: 'juguete-app' },
-          { text: 'Bondage sensual', product: 'bondage-inicial' },
-          { text: 'Fantasía cumplida', product: 'fantasia' }
+          { text: 'Baile grupal sensual', product: 'noche-pareja' },
+          { text: 'Masajes en círculo', product: 'masaje' },
+          { text: 'Datos eróticos de grupo', product: 'noche-pareja' },
+          { text: 'Verdad o desafío extremo', product: 'fantasia' },
+          { text: 'Experimentar con lubricante', product: 'masaje' },
+          { text: 'Role play grupal', product: 'fantasia' },
+          { text: 'Ronda de confesiones', product: 'fantasia' },
+          { text: 'Desafío sensorial grupal', product: 'masaje' }
         ]
       }
     };
@@ -593,6 +641,7 @@
 
     function setParejaType(type) {
       parejaType = type;
+      playerCount = null;
       document.querySelectorAll('.pareja-btn').forEach(btn => btn.classList.remove('active'));
       event.target.classList.add('active');
 
@@ -600,6 +649,18 @@
         document.getElementById('selectionScreen').style.display = 'none';
         document.getElementById('gamesScreen').classList.add('active');
       }, 300);
+    }
+
+    function setGroupGame() {
+      const count = parseInt(document.getElementById('playerCount').value);
+      if (count < 3 || count > 10) {
+        alert('Por favor ingresa un número entre 3 y 10 jugadores');
+        return;
+      }
+      parejaType = 'grupo';
+      playerCount = count;
+      document.getElementById('selectionScreen').style.display = 'none';
+      document.getElementById('gamesScreen').classList.add('active');
     }
 
     function goBackToSelection() {
