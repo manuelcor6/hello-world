@@ -144,7 +144,7 @@
       font-size: 1.05em;
     }
 
-    .product-item {
+    .discount-badge { display: inline-block; background: #2a8f4f; color: white; font-size: 0.8em; font-weight: 700; padding: 4px 10px; border-radius: 12px; white-space: nowrap; } .product-item {
       background: white;
       padding: 12px;
       border-radius: 10px;
@@ -315,15 +315,15 @@
     const CUSTOM_KEY = 'juegoDeseoCustomRetos';
 
     const productLinks = {
-      'primera-vez': { name: 'Kit Primera Vez', url: CATALOG_URL },
-      'noche-pareja': { name: 'Kit Noche en Pareja', url: CATALOG_URL },
-      'placer-femenino': { name: 'Kit Placer Femenino', url: CATALOG_URL },
-      'placer-masculino': { name: 'Kit Placer Masculino', url: CATALOG_URL },
-      'exploracion-anal': { name: 'Kit Exploración Anal', url: CATALOG_URL },
-      'juguete-app': { name: 'Kit Juguete con App', url: CATALOG_URL },
-      'masaje': { name: 'Kit de Masaje', url: CATALOG_URL },
-      'fantasia': { name: 'Kit Fantasía', url: CATALOG_URL },
-      'bondage-inicial': { name: 'Kit Bondage Inicial', url: CATALOG_URL }
+      'primera-vez': { name: 'Primera Vez', url: CATALOG_URL },
+      'noche-pareja': { name: 'Noche en Pareja', url: CATALOG_URL },
+      'placer-femenino': { name: 'Placer Femenino', url: CATALOG_URL },
+      'placer-masculino': { name: 'Placer Masculino', url: CATALOG_URL },
+      'exploracion-anal': { name: 'Exploración Anal', url: CATALOG_URL },
+      'juguete-app': { name: 'Juguete con App', url: CATALOG_URL },
+      'masaje': { name: 'Masaje', url: CATALOG_URL },
+      'fantasia': { name: 'Fantasía', url: CATALOG_URL },
+      'bondage-inicial': { name: 'Bondage Inicial', url: CATALOG_URL }
     };
 
     const challenges = [
@@ -432,8 +432,7 @@
     let playCount = 0;
     let currentIndex = null;
     let bag = [];
-    let customChallenges = [];
-
+.product-item {
     function loadCustomChallenges() {
       try {
         const raw = localStorage.getItem(CUSTOM_KEY);
@@ -516,8 +515,8 @@
         suggestionDiv.innerHTML = product
           ? `
           <h4>🎁 Sugerencia de producto (opcional)</h4>
-          <div class="product-item">${product.name}</div>
-          <button class="add-cart-btn" onclick="window.open('${product.url}', '_blank')">Ver este kit</button>
+          <div class="product-item">${product.name} ${getPromoHTML()}</div>
+          <button class="add-cart-btn" onclick="window.open('${product.url}', '_blank')">Ver sugerencia</button>
           <div class="catalog-line">
             <button class="catalog-btn" onclick="window.open('${CATALOG_URL}', '_blank')">📖 Ver catálogo completo en multiproductos.pro</button>
           </div>
