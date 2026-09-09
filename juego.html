@@ -1,973 +1,973 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-      <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>Juego del Deseo - Oh Yes</title>
-    <meta name="description" content="Juego picante para parejas. Desafíos, preguntas y mucho más." />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet" />
-    <style>
-          * {
-                  margin: 0;
-                  padding: 0;
-                  box-sizing: border-box;
-          }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Juego del Deseo - Oh Yes</title>
+  <meta name="description" content="Juego picante para parejas. Desafíos, preguntas y mucho más." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-          body {
-                  font-family: 'Poppins', sans-serif;
-                  background: linear-gradient(135deg, #ff1493 0%, #ff69b4 50%, #ffc0cb 100%);
-                  min-height: 100vh;
-                  padding: 20px;
-                  color: #333;
-          }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #ff1493 0%, #ff69b4 50%, #ffc0cb 100%);
+      min-height: 100vh;
+      padding: 20px;
+      color: #333;
+    }
 
-          .container {
-                  max-width: 1000px;
-                  margin: 0 auto;
-                  background: white;
-                  border-radius: 20px;
-                  padding: 40px;
-                  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-          }
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    }
 
-          header {
-                  text-align: center;
-                  margin-bottom: 40px;
-          }
+    header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
 
-          h1 {
-                  font-size: 2.5em;
-                  color: #ff1493;
-                  margin-bottom: 10px;
-          }
+    h1 {
+      font-size: 2.5em;
+      color: #ff1493;
+      margin-bottom: 10px;
+    }
 
-          .tagline {
-                  font-size: 1.1em;
-                  color: #666;
-                  margin-bottom: 20px;
-          }
+    .tagline {
+      font-size: 1.1em;
+      color: #666;
+      margin-bottom: 20px;
+    }
 
-          .selector-section {
-                  background: #fff5f7;
-                  padding: 30px;
-                  border-radius: 15px;
-                  margin-bottom: 30px;
-                  text-align: center;
-          }
+    .selector-section {
+      background: #fff5f7;
+      padding: 30px;
+      border-radius: 15px;
+      margin-bottom: 30px;
+      text-align: center;
+    }
 
-          .selector-section h2 {
-                  color: #ff1493;
-                  margin-bottom: 20px;
-                  font-size: 1.5em;
-          }
+    .selector-section h2 {
+      color: #ff1493;
+      margin-bottom: 20px;
+      font-size: 1.5em;
+    }
 
-          .pareja-selector {
-                  display: flex;
-                  gap: 15px;
-                  justify-content: center;
-                  flex-wrap: wrap;
-                  margin-bottom: 20px;
-          }
+    .pareja-selector {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
 
-          .pareja-btn {
-                  padding: 12px 25px;
-                  border: 2px solid #ff1493;
-                  background: white;
-                  color: #ff1493;
-                  border-radius: 25px;
-                  cursor: pointer;
-                  font-size: 1em;
-                  font-weight: 600;
-                  transition: all 0.3s;
-          }
+    .pareja-btn {
+      padding: 12px 25px;
+      border: 2px solid #ff1493;
+      background: white;
+      color: #ff1493;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 1em;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
 
-          .pareja-btn.active {
-                  background: #ff1493;
-                  color: white;
-          }
+    .pareja-btn.active {
+      background: #ff1493;
+      color: white;
+    }
 
-          .pareja-btn:hover {
-                  transform: scale(1.05);
-          }
+    .pareja-btn:hover {
+      transform: scale(1.05);
+    }
 
-          .games-grid {
-                  display: grid;
-                  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-                  gap: 20px;
-                  margin-bottom: 40px;
-          }
+    .games-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-bottom: 40px;
+    }
 
-          .game-card {
-                  background: linear-gradient(135deg, #ff69b4 0%, #ff1493 100%);
-                  color: white;
-                  padding: 30px;
-                  border-radius: 15px;
-                  cursor: pointer;
-                  transition: all 0.3s;
-                  text-align: center;
-                  box-shadow: 0 10px 30px rgba(255, 20, 147, 0.3);
-          }
+    .game-card {
+      background: linear-gradient(135deg, #ff69b4 0%, #ff1493 100%);
+      color: white;
+      padding: 30px;
+      border-radius: 15px;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(255, 20, 147, 0.3);
+    }
 
-          .game-card:hover {
-                  transform: translateY(-10px);
-                  box-shadow: 0 15px 40px rgba(255, 20, 147, 0.4);
-          }
+    .game-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(255, 20, 147, 0.4);
+    }
 
-          .game-card h3 {
-                  font-size: 1.5em;
-                  margin-bottom: 10px;
-          }
+    .game-card h3 {
+      font-size: 1.5em;
+      margin-bottom: 10px;
+    }
 
-          .game-card p {
-                  font-size: 0.9em;
-                  opacity: 0.9;
-          }
+    .game-card p {
+      font-size: 0.9em;
+      opacity: 0.9;
+    }
 
-          .game-icon {
-                  font-size: 2.5em;
-                  margin-bottom: 15px;
-          }
+    .game-icon {
+      font-size: 2.5em;
+      margin-bottom: 15px;
+    }
 
-          .game-container {
-                  display: none;
-                  animation: fadeIn 0.5s;
-          }
+    .game-container {
+      display: none;
+      animation: fadeIn 0.5s;
+    }
 
-          .game-container.active {
-                  display: block;
-          }
+    .game-container.active {
+      display: block;
+    }
 
-          @keyframes fadeIn {
-                  from {
-                            opacity: 0;
-                  }
-                  to {
-                            opacity: 1;
-                  }
-          }
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
 
-          .wheel-container {
-                  display: flex;
-                  justify-content: center;
-                  margin: 30px 0;
-          }
+    .wheel-container {
+      display: flex;
+      justify-content: center;
+      margin: 30px 0;
+    }
 
-          .wheel {
-                  width: 300px;
-                  height: 300px;
-                  border-radius: 50%;
-                  background: conic-gradient(
-                            from 0deg,
-                            #ff1493 0deg 120deg,
-                            #ff69b4 120deg 240deg,
-                            #ffc0cb 240deg 360deg
-                          );
-                  display: flex;
-                  align-items: center;
-                  justify-content: center;
-                  font-size: 2em;
-                  position: relative;
-                  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-                  transition: transform 0.1s;
-          }
+    .wheel {
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background: conic-gradient(
+        from 0deg,
+        #ff1493 0deg 120deg,
+        #ff69b4 120deg 240deg,
+        #ffc0cb 240deg 360deg
+      );
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2em;
+      position: relative;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      transition: transform 0.1s;
+    }
 
-          .wheel.spinning {
-                  animation: spin 4s ease-out;
-          }
+    .wheel.spinning {
+      animation: spin 4s ease-out;
+    }
 
-          @keyframes spin {
-                  from {
-                            transform: rotateZ(0deg);
-                  }
-                  to {
-                            transform: rotateZ(1800deg);
-                  }
-          }
+    @keyframes spin {
+      from {
+        transform: rotateZ(0deg);
+      }
+      to {
+        transform: rotateZ(1800deg);
+      }
+    }
 
-          .wheel::after {
-                  content: '';
-                  position: absolute;
-                  top: 20px;
-                  width: 20px;
-                  height: 20px;
-                  background: #ff1493;
-                  border-radius: 50%;
-                  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-          }
+    .wheel::after {
+      content: '';
+      position: absolute;
+      top: 20px;
+      width: 20px;
+      height: 20px;
+      background: #ff1493;
+      border-radius: 50%;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
 
-          .spin-btn, .dice-btn, .card-btn {
-                  background: linear-gradient(135deg, #ff1493 0%, #ff69b4 100%);
-                  color: white;
-                  border: none;
-                  padding: 15px 40px;
-                  font-size: 1.1em;
-                  border-radius: 25px;
-                  cursor: pointer;
-                  font-weight: 600;
-                  transition: all 0.3s;
-                  margin: 15px 0;
-          }
+    .spin-btn, .dice-btn, .card-btn {
+      background: linear-gradient(135deg, #ff1493 0%, #ff69b4 100%);
+      color: white;
+      border: none;
+      padding: 15px 40px;
+      font-size: 1.1em;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s;
+      margin: 15px 0;
+    }
 
-          .spin-btn:hover, .dice-btn:hover, .card-btn:hover {
-                  transform: scale(1.05);
-                  box-shadow: 0 10px 25px rgba(255, 20, 147, 0.4);
-          }
+    .spin-btn:hover, .dice-btn:hover, .card-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 25px rgba(255, 20, 147, 0.4);
+    }
 
-          .spin-btn:disabled, .dice-btn:disabled, .card-btn:disabled {
-                  opacity: 0.5;
-                  cursor: not-allowed;
-          }
+    .spin-btn:disabled, .dice-btn:disabled, .card-btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
 
-          .result {
-                  background: #fff5f7;
-                  padding: 25px;
-                  border-radius: 15px;
-                  margin: 20px 0;
-                  text-align: center;
-                  min-height: 80px;
-                  display: flex;
-                  align-items: center;
-                  justify-content: center;
-          }
+    .result {
+      background: #fff5f7;
+      padding: 25px;
+      border-radius: 15px;
+      margin: 20px 0;
+      text-align: center;
+      min-height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-          .result h3 {
-                  color: #ff1493;
-                  font-size: 1.3em;
-                  line-height: 1.6;
-          }
+    .result h3 {
+      color: #ff1493;
+      font-size: 1.3em;
+      line-height: 1.6;
+    }
 
-          .product-recommendation {
-                  background: linear-gradient(135deg, #fff5f7 0%, #ffe0ec 100%);
-                  padding: 25px;
-                  border-radius: 15px;
-                  margin: 20px 0;
-                  border-left: 5px solid #ff1493;
-          }
+    .product-recommendation {
+      background: linear-gradient(135deg, #fff5f7 0%, #ffe0ec 100%);
+      padding: 25px;
+      border-radius: 15px;
+      margin: 20px 0;
+      border-left: 5px solid #ff1493;
+    }
 
-          .product-recommendation h4 {
-                  color: #ff1493;
-                  margin-bottom: 15px;
-                  font-size: 1.2em;
-          }
+    .product-recommendation h4 {
+      color: #ff1493;
+      margin-bottom: 15px;
+      font-size: 1.2em;
+    }
 
-          .product-item {
-                  background: white;
-                  padding: 15px;
-                  border-radius: 10px;
-                  margin: 10px 0;
-                  display: flex;
-                  justify-content: space-between;
-                  align-items: center;
-          }
+    .product-item {
+      background: white;
+      padding: 15px;
+      border-radius: 10px;
+      margin: 10px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-          .product-item strong {
-                  color: #ff1493;
-          }
+    .product-item strong {
+      color: #ff1493;
+    }
 
-          .add-cart-btn {
-                  background: #ff1493;
-                  color: white;
-                  border: none;
-                  padding: 10px 20px;
-                  border-radius: 20px;
-                  cursor: pointer;
-                  font-weight: 600;
-                  transition: all 0.3s;
-          }
+    .add-cart-btn {
+      background: #ff1493;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
 
-          .add-cart-btn:hover {
-                  background: #ff69b4;
-                  transform: scale(1.05);
-          }
+    .add-cart-btn:hover {
+      background: #ff69b4;
+      transform: scale(1.05);
+    }
 
-          .back-btn {
-                  background: #666;
-                  color: white;
-                  border: none;
-                  padding: 10px 25px;
-                  border-radius: 20px;
-                  cursor: pointer;
-                  font-weight: 600;
-                  margin-bottom: 20px;
-          }
+    .back-btn {
+      background: #666;
+      color: white;
+      border: none;
+      padding: 10px 25px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
 
-          .back-btn:hover {
-                  background: #444;
-          }
+    .back-btn:hover {
+      background: #444;
+    }
 
-          .dice-container {
-                  display: flex;
-                  justify-content: center;
-                  gap: 20px;
-                  margin: 30px 0;
-                  flex-wrap: wrap;
-          }
+    .dice-container {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin: 30px 0;
+      flex-wrap: wrap;
+    }
 
-          .dice {
-                  width: 80px;
-                  height: 80px;
-                  background: linear-gradient(135deg, #ff1493 0%, #ff69b4 100%);
-                  display: flex;
-                  align-items: center;
-                  justify-content: center;
-                  font-size: 2em;
-                  border-radius: 10px;
-                  color: white;
-                  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-                  font-weight: 700;
-          }
+    .dice {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, #ff1493 0%, #ff69b4 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2em;
+      border-radius: 10px;
+      color: white;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      font-weight: 700;
+    }
 
-          .cards-container {
-                  display: grid;
-                  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-                  gap: 15px;
-                  margin: 30px 0;
-          }
+    .cards-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 15px;
+      margin: 30px 0;
+    }
 
-          .card {
-                  background: linear-gradient(135deg, #ff1493 0%, #ff69b4 100%);
-                  color: white;
-                  padding: 20px;
-                  border-radius: 10px;
-                  cursor: pointer;
-                  transition: all 0.3s;
-                  text-align: center;
-                  min-height: 100px;
-                  display: flex;
-                  align-items: center;
-                  justify-content: center;
-                  font-weight: 600;
-          }
+    .card {
+      background: linear-gradient(135deg, #ff1493 0%, #ff69b4 100%);
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-align: center;
+      min-height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+    }
 
-          .card:hover {
-                  transform: rotateY(20deg) scale(1.05);
-          }
+    .card:hover {
+      transform: rotateY(20deg) scale(1.05);
+    }
 
-          .card.flipped {
-                  background: white;
-                  color: #ff1493;
-                  border: 3px solid #ff1493;
-          }
+    .card.flipped {
+      background: white;
+      color: #ff1493;
+      border: 3px solid #ff1493;
+    }
 
-          .challenges-intro {
-                  text-align: center;
-                  margin-bottom: 20px;
-          }
+    .challenges-intro {
+      text-align: center;
+      margin-bottom: 20px;
+    }
 
-          .challenges-intro p {
-                  color: #666;
-                  font-size: 0.95em;
-                  margin-top: 8px;
-          }
+    .challenges-intro p {
+      color: #666;
+      font-size: 0.95em;
+      margin-top: 8px;
+    }
 
-          .challenges-list {
-                  display: flex;
-                  flex-direction: column;
-                  gap: 15px;
-                  margin: 20px 0;
-          }
+    .challenges-list {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin: 20px 0;
+    }
 
-          .challenge-item {
-                  background: #fff5f7;
-                  border-radius: 15px;
-                  padding: 20px;
-                  border-left: 5px solid #ff1493;
-                  text-align: left;
-          }
+    .challenge-item {
+      background: #fff5f7;
+      border-radius: 15px;
+      padding: 20px;
+      border-left: 5px solid #ff1493;
+      text-align: left;
+    }
 
-          .challenge-item .challenge-text {
-                  font-size: 1.05em;
-                  color: #333;
-                  line-height: 1.5;
-                  margin-bottom: 12px;
-          }
+    .challenge-item .challenge-text {
+      font-size: 1.05em;
+      color: #333;
+      line-height: 1.5;
+      margin-bottom: 12px;
+    }
 
-          .challenge-item .challenge-text .challenge-number {
-                  color: #ff1493;
-                  font-weight: 700;
-          }
+    .challenge-item .challenge-text .challenge-number {
+      color: #ff1493;
+      font-weight: 700;
+    }
 
-          .suggestion-tag {
-                  display: flex;
-                  justify-content: space-between;
-                  align-items: center;
-                  background: white;
-                  padding: 10px 15px;
-                  border-radius: 10px;
-                  font-size: 0.9em;
-                  flex-wrap: wrap;
-                  gap: 10px;
-          }
+    .suggestion-tag {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: white;
+      padding: 10px 15px;
+      border-radius: 10px;
+      font-size: 0.9em;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
 
-          .suggestion-tag .suggestion-label {
-                  color: #ff1493;
-                  font-weight: 700;
-                  font-size: 0.75em;
-                  text-transform: uppercase;
-                  letter-spacing: 0.5px;
-                  display: block;
-                  margin-bottom: 3px;
-          }
+    .suggestion-tag .suggestion-label {
+      color: #ff1493;
+      font-weight: 700;
+      font-size: 0.75em;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      display: block;
+      margin-bottom: 3px;
+    }
 
-          .suggestion-tag .add-cart-btn {
-                  padding: 8px 16px;
-                  font-size: 0.9em;
-                  white-space: nowrap;
-          }
+    .suggestion-tag .add-cart-btn {
+      padding: 8px 16px;
+      font-size: 0.9em;
+      white-space: nowrap;
+    }
 
-          .back-to-home {
-                  text-align: center;
-                  margin-top: 30px;
-          }
+    .back-to-home {
+      text-align: center;
+      margin-top: 30px;
+    }
 
-          .back-to-home a {
-                  display: inline-block;
-                  background: #666;
-                  color: white;
-                  padding: 12px 30px;
-                  border-radius: 25px;
-                  text-decoration: none;
-                  transition: all 0.3s;
-          }
+    .back-to-home a {
+      display: inline-block;
+      background: #666;
+      color: white;
+      padding: 12px 30px;
+      border-radius: 25px;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
 
-          .back-to-home a:hover {
-                  background: #444;
-                  transform: scale(1.05);
-          }
+    .back-to-home a:hover {
+      background: #444;
+      transform: scale(1.05);
+    }
 
-          @media (max-width: 768px) {
-                  .container {
-                            padding: 20px;
-                  }
+    @media (max-width: 768px) {
+      .container {
+        padding: 20px;
+      }
 
-                  h1 {
-                            font-size: 2em;
-                  }
+      h1 {
+        font-size: 2em;
+      }
 
-                  .wheel {
-                            width: 250px;
-                            height: 250px;
-                  }
+      .wheel {
+        width: 250px;
+        height: 250px;
+      }
 
-                  .games-grid {
-                            grid-template-columns: 1fr;
-                  }
+      .games-grid {
+        grid-template-columns: 1fr;
+      }
 
-                  .suggestion-tag {
-                            flex-direction: column;
-                            align-items: flex-start;
-                  }
-          }
-        </style>
-  </head>
-  <body>
-      <div class="container">
-            <header>
-                    <h1>🔥 Juego del Deseo</h1>
-                  <p class="tagline">Desafíos picantes para parejas • Elige tu tipo y juega</p>p>
-            </header>
-      
-          <!-- Selector de Tipo de Pareja -->
-          <div id="selectionScreen" class="selector-section">
-                <h2>Selecciona los jugadores</h2>
-          
-                <div style="margin-bottom: 30px;">
-                        <h3 style="color: #ff1493; margin-bottom: 15px;">👫 Pareja</h3>
-                        <div class="pareja-selector">
-                                  <button class="pareja-btn" onclick="setParejaType('mujer-mujer')">👩‍👩 Mujer + Mujer</button>button>
-                                  <button class="pareja-btn" onclick="setParejaType('hombre-hombre')">👨‍👨 Hombre + Hombre</button>button>
-                                  <button class="pareja-btn" onclick="setParejaType('hombre-mujer')">👨‍👩 Hombre + Mujer</button>button>
-                        </div>div>
-                </div>div>
-          
-                <div style="text-align: center; margin: 30px 0; font-size: 1.2em; color: #999;">— O —</div>div>
-          
-                <div>
-                          <h3 style="color: #ff1493; margin-bottom: 15px;">🎉 Juego Entre Varios</h3>h3>
-                          <div style="text-align: center;">
-                                      <label for="playerCount" style="font-size: 1.1em; color: #333; margin-right: 10px;">¿Cuántos jugadores?</label>label>
-                                      <input type="number" id="playerCount" min="3" max="10" value="3" style="width: 80px; padding: 10px; font-size: 1em; border: 2px solid #ff1493; border-radius: 8px;">
-                                      <button class="pareja-btn" onclick="setGroupGame()" style="margin-left: 10px;">Jugar en Grupo 🎲</button>button>
-                          </div>
-                </div>
-          </div>
+      .suggestion-tag {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🔥 Juego del Deseo</h1>
+      <p class="tagline">Desafíos picantes para parejas • Elige tu tipo y juega</p>
+    </header>
 
-            <!-- Pantalla de Selección de Juegos -->
-            <div id="gamesScreen" class="game-container">
-                    <button class="back-btn" onclick="goBackToSelection()">← Volver atrás</button>button>
-                    <div class="games-grid">
-                              <div class="game-card" onclick="startGame('wheel')">
-                                          <div class="game-icon">🎡</div>
-                                          <h3>Rueda Giratoria</h3>h3>
-                                          <p>¡Gira y descubre tu desafío picante!</p>
-                              </div>
-                            <div class="game-card" onclick="startGame('dice')">
-                                      <div class="game-icon">🎲</div>
-                                      <h3>Dados de Deseo</h3>
-                                      <p>Lanza los dados y combina escenarios</p>
-                            </div>
-                            <div class="game-card" onclick="startGame('cards')">
-                                      <div class="game-icon">🃏</div>
-                                      <h3>Cartas del Placer</h3>
-                                      <p>Revela las cartas y desbloquea sorpresas</p>
-                            </div>
-                            <div class="game-card" onclick="startGame('list')">
-                                      <div class="game-icon">📋</div>
-                                      <h3>Retos Ya Inscritos</h3>
-                                      <p>Mira la lista completa de retos, sin azar</p>
-                            </div>
-                    </div>
-            </div>
-      
-          <!-- Juego: Rueda Giratoria -->
-          <div id="wheelGame" class="game-container">
-                <button class="back-btn" onclick="backToGames()">← Volver a juegos</button>button>
-                <div class="wheel-container">
-                        <div class="wheel" id="wheel">🎡</div>
-                </div>
-                <div style="text-align: center;">
-                        <button class="spin-btn" id="spinBtn" onclick="spinWheel()">¡GIRAR LA RUEDA!</button>button>
-                </div>
-                <div class="result" id="wheelResult"></div>
-                <div id="wheelProducts" class="product-recommendation"></div>
-          </div>
-      
-          <!-- Juego: Dados de Deseo -->
-          <div id="diceGame" class="game-container">
-                <button class="back-btn" onclick="backToGames()">← Volver a juegos</button>button>
-                <div style="text-align: center;">
-                        <h3>Lanza los dados y descubre tu desafío</h3>
-                </div>
-                <div class="dice-container">
-                        <div class="dice" id="dice1">🎲</div>
-                        <div class="dice" id="dice2">🎲</div>
-                </div>
-                <div style="text-align: center;">
-                        <button class="dice-btn" id="diceBtn" onclick="rollDice()">¡LANZAR DADOS!</button>button>
-                </div>
-                <div class="result" id="diceResult"></div>
-                <div id="diceProducts" class="product-recommendation"></div>
-          </div>
-      
-          <!-- Juego: Cartas del Placer -->
-          <div id="cardsGame" class="game-container">
-                <button class="back-btn" onclick="backToGames()">← Volver a juegos</button>button>
-                <div style="text-align: center;">
-                        <h3>Haz clic en una carta para revelar tu sorpresa</h3>
-                </div>
-                <div class="cards-container" id="cardsContainer"></div>
-                <div class="result" id="cardResult"></div>
-                <div id="cardProducts" class="product-recommendation"></div>
-          </div>
-      
-          <!-- Juego: Retos Ya Inscritos -->
-          <div id="listGame" class="game-container">
-                <button class="back-btn" onclick="backToGames()">← Volver a juegos</button>button>
-                <div class="challenges-intro">
-                        <h3>📋 Todos los retos disponibles</h3>
-                        <p>Esta es la lista completa de retos ya inscritos para tu selección. Los productos que aparecen junto a algunos retos son solo <strong>sugerencias</strong>, no son obligatorios para jugar.</p>
-                </div>
-                <div class="challenges-list" id="challengesList"></div>
-          </div>
-      
-          <div class="back-to-home">
-                <a href="index.html">← Volver al catálogo</a>a>
-          </div>
+    <!-- Selector de Tipo de Pareja -->
+    <div id="selectionScreen" class="selector-section">
+      <h2>Selecciona los jugadores</h2>
+
+      <div style="margin-bottom: 30px;">
+        <h3 style="color: #ff1493; margin-bottom: 15px;">👫 Pareja</h3>
+        <div class="pareja-selector">
+          <button class="pareja-btn" onclick="setParejaType('mujer-mujer')">👩‍👩 Mujer + Mujer</button>
+          <button class="pareja-btn" onclick="setParejaType('hombre-hombre')">👨‍👨 Hombre + Hombre</button>
+          <button class="pareja-btn" onclick="setParejaType('hombre-mujer')">👨‍👩 Hombre + Mujer</button>
+        </div>
       </div>
-  
-    <script>
-          let parejaType = null;
-          let playerCount = null;
-          let challengePlayCount = 0;
-          const SUGGESTION_EVERY = 5;
 
-          // Contenido del juego basado en tipo de pareja
-          const gameContent = {
-                  'mujer-mujer': {
-                            wheel: [
-                              { challenge: "Una provoca a la otra con un striptease mientras bailan", product: 'noche-pareja' },
-                              { challenge: "Masajea a tu pareja con lubricante íntimo aromático", product: 'masaje' },
-                              { challenge: "Usen juntas el vibrador de alta intensidad", product: 'placer-femenino' },
-                              { challenge: "Datos eróticos para parejas: sigan el reto que sale", product: 'noche-pareja' },
-                              { challenge: "Lubricante anal para exploración segura juntas", product: 'exploración-anal' },
-                              { challenge: "Controlen el vibrador con app entre ustedes", product: 'juguete-app' },
-                              { challenge: "Role play: inventan una fantasía y la actúan", product: 'fantasia' },
-                              { challenge: "Bondage de confianza: aten y desaten con cuidado", product: 'bondage-inicial' },
-                              { challenge: "Masaje corporal largo con aceite aromático", product: 'masaje' },
-                              { challenge: "Lubricante frío-calor: experimenten sensaciones nuevas", product: 'masaje' },
-                              { challenge: "Intercambien un masaje de pies mientras se cuentan una fantasía", product: 'masaje' },
-                              { challenge: "Prueben el kit de primera vez juntas, paso a paso y sin prisa", product: 'primera-vez' },
-                              { challenge: "Una venda los ojos de la otra y la sorprende con caricias", product: 'masaje' },
-                              { challenge: "Jueguen con hielo y velas de masaje para sentir contrastes de temperatura", product: 'masaje' },
-                              { challenge: "Una elige la posición, la otra controla el ritmo del vibrador", product: 'placer-femenino' },
-                              { challenge: "Escriban juntas 3 fantasías en papelitos y cumplan una al azar", product: 'fantasia' },
-                              { challenge: "Practiquen bondage suave con pañuelos de seda, siempre con confianza", product: 'bondage-inicial' },
-                              { challenge: "Compartan un baño caliente y terminen con un masaje relajante", product: 'masaje' },
-                              { challenge: "Una dirige a la otra a distancia usando el juguete con app", product: 'juguete-app' },
-                              { challenge: "Creen una escena de seducción con música y luces bajas", product: 'noche-pareja' }
-                                      ],
-                            dice: [
-                              { scenario: 'Besos + Caricias apasionadas', product: 'noche-pareja' },
-                              { scenario: 'Masaje + Relajación total', product: 'masaje' },
-                              { scenario: 'Vibrador + Variedad de ritmos', product: 'placer-femenino' },
-                              { scenario: 'Exploración + Seguridad', product: 'exploración-anal' },
-                              { scenario: 'Fantasía + Riesgo calculado', product: 'fantasia' },
-                              { scenario: 'Bondage + Confianza mutua', product: 'bondage-inicial' }
-                                      ],
-                            cards: [
-                              { text: 'Masaje sensual con aceite', product: 'masaje' },
-                              { text: 'Vibrador juntas a ritmo', product: 'placer-femenino' },
-                              { text: 'Exploración anal con cuidado', product: 'exploración-anal' },
-                              { text: 'Dados eróticos para parejas', product: 'noche-pareja' },
-                              { text: 'Control remoto a distancia', product: 'juguete-app' },
-                              { text: 'Fantasía romántica cumplida', product: 'fantasia' },
-                              { text: 'Bondage de confianza', product: 'bondage-inicial' },
-                              { text: 'Lubricante especial frío-calor', product: 'masaje' }
-                                      ]
-                  },
-                  'hombre-hombre': {
-                            wheel: [
-                              { challenge: "Uno provoca al otro con striptease sexy", product: 'noche-pareja' },
-                              { challenge: "Masaje apasionado con lubricante íntimo de calidad", product: 'masaje' },
-                              { challenge: "Anillo vibrador para máxima sensación conjunta", product: 'placer-masculino' },
-                              { challenge: "Retardante: control y resistencia sin prisa", product: 'placer-masculino' },
-                              { challenge: "Lubricante anal premium para exploración segura", product: 'exploración-anal' },
-                              { challenge: "Control por app: uno sorprende al otro a distancia", product: 'juguete-app' },
-                              { challenge: "Role play intenso: actúan una fantasía juntos", product: 'fantasia' },
-                              { challenge: "Bondage: aten y desaten con máxima confianza", product: 'bondage-inicial' },
-                              { challenge: "Datos eróticos gay: sigan cada reto", product: 'noche-pareja' },
-                              { challenge: "Masaje anal: exploren juntos sensaciones nuevas", product: 'exploración-anal' },
-                              { challenge: "Practiquen un masaje de pies antes del masaje completo", product: 'masaje' },
-                              { challenge: "Prueben el kit de primera vez juntos, sin prisa", product: 'primera-vez' },
-                              { challenge: "Uno venda los ojos del otro y lo sorprende con caricias", product: 'masaje' },
-                              { challenge: "Jueguen con hielo y velas de masaje para sentir contrastes de temperatura", product: 'masaje' },
-                              { challenge: "Uno elige la posición, el otro controla el ritmo con el anillo vibrador", product: 'placer-masculino' },
-                              { challenge: "Escriban juntos 3 fantasías en papelitos y cumplan una al azar", product: 'fantasia' },
-                              { challenge: "Practiquen bondage suave con pañuelos, siempre con confianza", product: 'bondage-inicial' },
-                              { challenge: "Compartan una ducha caliente y terminen con un masaje relajante", product: 'masaje' },
-                              { challenge: "Uno dirige al otro a distancia usando el juguete con app", product: 'juguete-app' },
-                              { challenge: "Creen una escena de seducción con música y luces bajas", product: 'noche-pareja' }
-                                      ],
-                            dice: [
-                              { scenario: 'Besos + Control passion', product: 'noche-pareja' },
-                              { scenario: 'Masaje + Ritmo lento', product: 'masaje' },
-                              { scenario: 'Anillo + Intensidad máxima', product: 'placer-masculino' },
-                              { scenario: 'Retardante + Resistencia', product: 'placer-masculino' },
-                              { scenario: 'Anal + Lubricante especial', product: 'exploración-anal' },
-                              { scenario: 'Bondage + Confianza total', product: 'bondage-inicial' }
-                                      ],
-                            cards: [
-                              { text: 'Masaje intenso', product: 'masaje' },
-                              { text: 'Anillo vibrador para dos', product: 'placer-masculino' },
-                              { text: 'Retardante de lujo', product: 'placer-masculino' },
-                              { text: 'Exploración anal segura', product: 'exploración-anal' },
-                              { text: 'Dados eróticos gay', product: 'noche-pareja' },
-                              { text: 'Control remoto sorpresa', product: 'juguete-app' },
-                              { text: 'Bondage sensual', product: 'bondage-inicial' },
-                              { text: 'Fantasía cumplida juntos', product: 'fantasia' }
-                                      ]
-                  },
-                  'hombre-mujer': {
-                            wheel: [
-                              { challenge: "Ella lo provoca con striptease lento mientras él observa", product: 'noche-pareja' },
-                              { challenge: "Él la masajea con lubricante íntimo mientras susurra al oído", product: 'masaje' },
-                              { challenge: "Usa el vibrador juntos mientras se besan apasionadamente", product: 'placer-femenino' },
-                              { challenge: "Ella toma el control del anillo vibrador en él", product: 'placer-masculino' },
-                              { challenge: "Dados eróticos: sigan cada reto que sale", product: 'noche-pareja' },
-                              { challenge: "Ella lo acaricia lentamente mientras él susurra fantasías", product: 'exploración-anal' },
-                              { challenge: "Lubricante frío-calor: experimenten juntos sensaciones nuevas", product: 'masaje' },
-                              { challenge: "Él controla el vibrador por app mientras ella no ve", product: 'juguete-app' },
-                              { challenge: "Juego de roles: ella se viste sexy y actúa un encuentro casual", product: 'fantasia' },
-                              { challenge: "Exploración: lubricante anal especial y máxima confianza", product: 'exploración-anal' },
-                              { challenge: "Practiquen un masaje de pies antes del masaje completo", product: 'masaje' },
-                              { challenge: "Prueben juntos el kit de primera vez, sin prisa", product: 'primera-vez' },
-                              { challenge: "Él le venda los ojos y la sorprende con caricias", product: 'masaje' },
-                              { challenge: "Jueguen con hielo y velas de masaje para sentir contrastes de temperatura", product: 'masaje' },
-                              { challenge: "Ella controla el vibrador con app mientras él espera", product: 'juguete-app' },
-                              { challenge: "Escriban juntos 3 fantasías en papelitos y cumplan una al azar", product: 'fantasia' },
-                              { challenge: "Practiquen bondage suave con pañuelos de seda, siempre con confianza", product: 'bondage-inicial' },
-                              { challenge: "Compartan una ducha caliente y terminen con un masaje relajante", product: 'masaje' },
-                              { challenge: "Él la dirige a distancia usando el juguete con app", product: 'juguete-app' },
-                              { challenge: "Creen una escena de seducción con música y luces bajas", product: 'noche-pareja' }
-                                      ],
-                            dice: [
-                              { scenario: 'Besos + Provocación mutua', product: 'noche-pareja' },
-                              { scenario: 'Masaje + Lubricante especial', product: 'masaje' },
-                              { scenario: 'Vibrador + Ritmo variado', product: 'placer-femenino' },
-                              { scenario: 'Anillo + Pasión sin freno', product: 'placer-masculino' },
-                              { scenario: 'Anal + Máxima seguridad', product: 'exploración-anal' },
-                              { scenario: 'App + Sorpresa inesperada', product: 'juguete-app' }
-                                      ],
-                            cards: [
-                              { text: 'Lubricante frío-calor', product: 'masaje' },
-                              { text: 'Vibrador juntos', product: 'placer-femenino' },
-                              { text: 'Ella toma el control', product: 'placer-masculino' },
-                              { text: 'Exploración anal segura', product: 'exploración-anal' },
-                              { text: 'Dados eróticos hetero', product: 'noche-pareja' },
-                              { text: 'Vibrador con control remoto', product: 'juguete-app' },
-                              { text: 'Noche de fantasía', product: 'fantasia' },
-                              { text: 'Bondage inicial', product: 'bondage-inicial' }
-                                      ]
-                  },
-                  'grupo': {
-                            wheel: [
-                              { challenge: "Todos bailan sensualmente en círculo", product: 'noche-pareja' },
-                              { challenge: "Ronda de masajes: cada uno masajea al siguiente", product: 'masaje' },
-                              { challenge: "Todos juegan con los datos eróticos de grupo", product: 'noche-pareja' },
-                              { challenge: "Ronda de verdad o desafío picante", product: 'fantasia' },
-                              { challenge: "Todos se dan masaje en círculo", product: 'masaje' },
-                              { challenge: "Datos de grupo: desafíos para parejas dentro del grupo", product: 'noche-pareja' },
-                              { challenge: "Juego de roles en grupo: actúan una escena juntos", product: 'fantasia' },
-                              { challenge: "Todos experimentan con lubricante aromático", product: 'masaje' },
-                              { challenge: "Carrera de verdades atrevidas en círculo", product: 'fantasia' },
-                              { challenge: "Desafío de sensibilidad: con los ojos vendados", product: 'masaje' },
-                              { challenge: "Ronda de masaje de pies antes del masaje completo", product: 'masaje' },
-                              { challenge: "Presenten el kit de primera vez a quien quiera probarlo", product: 'primera-vez' },
-                              { challenge: "Juego de vendas: uno a la vez recibe caricias con los ojos vendados", product: 'masaje' },
-                              { challenge: "Ronda con hielo y velas de masaje para sentir contrastes de temperatura", product: 'masaje' },
-                              { challenge: "Elige a alguien del grupo para dirigir un reto con el juguete con app", product: 'juguete-app' },
-                              { challenge: "Cada uno escribe una fantasía en un papel y se sortean al azar", product: 'fantasia' },
-                              { challenge: "Ronda de bondage suave con pañuelos, siempre con consentimiento", product: 'bondage-inicial' },
-                              { challenge: "Círculo de confesiones picantes con premio sorpresa", product: 'noche-pareja' },
-                              { challenge: "Reto de seducción: cada uno improvisa 30 segundos de baile", product: 'noche-pareja' },
-                              { challenge: "Ronda de preguntas atrevidas con castigo de masaje", product: 'masaje' }
-                                      ],
-                            dice: [
-                              { scenario: 'Baile sensual grupal', product: 'noche-pareja' },
-                              { scenario: 'Ronda de masajes', product: 'masaje' },
-                              { scenario: 'Juego de atrevimientos', product: 'fantasia' },
-                              { scenario: 'Datos eróticos de grupo', product: 'noche-pareja' },
-                              { scenario: 'Verdad o desafío picante', product: 'fantasia' },
-                              { scenario: 'Experimentación en grupo', product: 'masaje' }
-                                      ],
-                            cards: [
-                              { text: 'Baile grupal sensual', product: 'noche-pareja' },
-                              { text: 'Masajes en círculo', product: 'masaje' },
-                              { text: 'Datos eróticos de grupo', product: 'noche-pareja' },
-                              { text: 'Verdad o desafío extremo', product: 'fantasia' },
-                              { text: 'Experimentar con lubricante', product: 'masaje' },
-                              { text: 'Role play grupal', product: 'fantasia' },
-                              { text: 'Ronda de confesiones', product: 'fantasia' },
-                              { text: 'Desafío sensorial grupal', product: 'masaje' }
-                                      ]
-                  }
-          };
+      <div style="text-align: center; margin: 30px 0; font-size: 1.2em; color: #999;">— O —</div>
 
-          const CATALOG_URL = 'https://multiproductos.pro/catalogo';
+      <div>
+        <h3 style="color: #ff1493; margin-bottom: 15px;">🎉 Juego Entre Varios</h3>
+        <div style="text-align: center;">
+          <label for="playerCount" style="font-size: 1.1em; color: #333; margin-right: 10px;">¿Cuántos jugadores?</label>
+          <input type="number" id="playerCount" min="3" max="10" value="3" style="width: 80px; padding: 10px; font-size: 1em; border: 2px solid #ff1493; border-radius: 8px;">
+          <button class="pareja-btn" onclick="setGroupGame()" style="margin-left: 10px;">Jugar en Grupo 🎲</button>
+        </div>
+      </div>
+    </div>
 
-          const productLinks = {
-                  'primera-vez': { name: 'Kit Primera Vez', price: '$52.470', url: CATALOG_URL },
-                  'noche-pareja': { name: 'Kit Noche en Pareja', price: '$62.910', url: CATALOG_URL },
-                  'placer-femenino': { name: 'Kit Placer Femenino', price: '$97.020', url: CATALOG_URL },
-                  'placer-masculino': { name: 'Kit Placer Masculino', price: '$74.700', url: CATALOG_URL },
-                  'exploración-anal': { name: 'Kit Exploración Anal', price: '$81.720', url: CATALOG_URL },
-                  'juguete-app': { name: 'Kit Juguete con App', price: '$170.010', url: CATALOG_URL },
-                  'masaje': { name: 'Kit de Masaje', price: '$90.711', url: CATALOG_URL },
-                  'fantasia': { name: 'Kit Fantasía', price: '$49.860', url: CATALOG_URL },
-                  'bondage-inicial': { name: 'Kit Bondage Inicial', price: '$81.720', url: CATALOG_URL }
-          };
+    <!-- Pantalla de Selección de Juegos -->
+    <div id="gamesScreen" class="game-container">
+      <button class="back-btn" onclick="goBackToSelection()">← Volver atrás</button>
+      <div class="games-grid">
+        <div class="game-card" onclick="startGame('wheel')">
+          <div class="game-icon">🎡</div>
+          <h3>Rueda Giratoria</h3>
+          <p>¡Gira y descubre tu desafío picante!</p>
+        </div>
+        <div class="game-card" onclick="startGame('dice')">
+          <div class="game-icon">🎲</div>
+          <h3>Dados de Deseo</h3>
+          <p>Lanza los dados y combina escenarios</p>
+        </div>
+        <div class="game-card" onclick="startGame('cards')">
+          <div class="game-icon">🃏</div>
+          <h3>Cartas del Placer</h3>
+          <p>Revela las cartas y desbloquea sorpresas</p>
+        </div>
+        <div class="game-card" onclick="startGame('list')">
+          <div class="game-icon">📋</div>
+          <h3>Retos Ya Inscritos</h3>
+          <p>Mira la lista completa de retos, sin azar</p>
+        </div>
+      </div>
+    </div>
 
-          function setParejaType(type) {
-                  parejaType = type;
-                  playerCount = null;
-                  document.querySelectorAll('.pareja-btn').forEach(btn => btn.classList.remove('active'));
-                  event.target.classList.add('active');
+    <!-- Juego: Rueda Giratoria -->
+    <div id="wheelGame" class="game-container">
+      <button class="back-btn" onclick="backToGames()">← Volver a juegos</button>
+      <div class="wheel-container">
+        <div class="wheel" id="wheel">🎡</div>
+      </div>
+      <div style="text-align: center;">
+        <button class="spin-btn" id="spinBtn" onclick="spinWheel()">¡GIRAR LA RUEDA!</button>
+      </div>
+      <div class="result" id="wheelResult"></div>
+      <div id="wheelProducts" class="product-recommendation"></div>
+    </div>
 
-            setTimeout(() => {
-                      document.getElementById('selectionScreen').style.display = 'none';
-                      document.getElementById('gamesScreen').classList.add('active');
-            }, 300);
-          }
+    <!-- Juego: Dados de Deseo -->
+    <div id="diceGame" class="game-container">
+      <button class="back-btn" onclick="backToGames()">← Volver a juegos</button>
+      <div style="text-align: center;">
+        <h3>Lanza los dados y descubre tu desafío</h3>
+      </div>
+      <div class="dice-container">
+        <div class="dice" id="dice1">🎲</div>
+        <div class="dice" id="dice2">🎲</div>
+      </div>
+      <div style="text-align: center;">
+        <button class="dice-btn" id="diceBtn" onclick="rollDice()">¡LANZAR DADOS!</button>
+      </div>
+      <div class="result" id="diceResult"></div>
+      <div id="diceProducts" class="product-recommendation"></div>
+    </div>
 
-          function setGroupGame() {
-                  const count = parseInt(document.getElementById('playerCount').value);
-                  if (count < 3 || count > 10) {
-                            alert('Por favor ingresa un número entre 3 y 10 jugadores');
-                            return;
-                  }
-                  parejaType = 'grupo';
-                  playerCount = count;
-                  document.getElementById('selectionScreen').style.display = 'none';
-                  document.getElementById('gamesScreen').classList.add('active');
-          }
+    <!-- Juego: Cartas del Placer -->
+    <div id="cardsGame" class="game-container">
+      <button class="back-btn" onclick="backToGames()">← Volver a juegos</button>
+      <div style="text-align: center;">
+        <h3>Haz clic en una carta para revelar tu sorpresa</h3>
+      </div>
+      <div class="cards-container" id="cardsContainer"></div>
+      <div class="result" id="cardResult"></div>
+      <div id="cardProducts" class="product-recommendation"></div>
+    </div>
 
-          function goBackToSelection() {
-                  document.getElementById('gamesScreen').classList.remove('active');
-                  document.getElementById('selectionScreen').style.display = 'block';
-                  document.querySelectorAll('.pareja-btn').forEach(btn => btn.classList.remove('active'));
-          }
+    <!-- Juego: Retos Ya Inscritos -->
+    <div id="listGame" class="game-container">
+      <button class="back-btn" onclick="backToGames()">← Volver a juegos</button>
+      <div class="challenges-intro">
+        <h3>📋 Todos los retos disponibles</h3>
+        <p>Esta es la lista completa de retos ya inscritos para tu selección. Los productos que aparecen junto a algunos retos son solo <strong>sugerencias</strong>, no son obligatorios para jugar.</p>
+      </div>
+      <div class="challenges-list" id="challengesList"></div>
+    </div>
 
-          function startGame(gameType) {
-                  document.getElementById('gamesScreen').classList.remove('active');
+    <div class="back-to-home">
+      <a href="index.html">← Volver al catálogo</a>
+    </div>
+  </div>
 
-            if (gameType === 'wheel') {
-                      document.getElementById('wheelGame').classList.add('active');
-            } else if (gameType === 'dice') {
-                      document.getElementById('diceGame').classList.add('active');
-            } else if (gameType === 'cards') {
-                      document.getElementById('cardsGame').classList.add('active');
-                      generateCards();
-            } else if (gameType === 'list') {
-                      document.getElementById('listGame').classList.add('active');
-                      renderChallengesList();
-            }
-          }
+  <script>
+    let parejaType = null;
+    let playerCount = null;
+    let challengePlayCount = 0;
+    const SUGGESTION_EVERY = 5;
 
-          function backToGames() {
-                  document.getElementById('wheelGame').classList.remove('active');
-                  document.getElementById('diceGame').classList.remove('active');
-                  document.getElementById('cardsGame').classList.remove('active');
-                  document.getElementById('listGame').classList.remove('active');
-                  document.getElementById('gamesScreen').classList.add('active');
-                  document.getElementById('wheelResult').innerHTML = '';
-                  document.getElementById('diceResult').innerHTML = '';
-                  document.getElementById('cardResult').innerHTML = '';
-                  document.getElementById('wheelProducts').innerHTML = '';
-                  document.getElementById('diceProducts').innerHTML = '';
-                  document.getElementById('cardProducts').innerHTML = '';
-          }
+    // Contenido del juego basado en tipo de pareja
+    const gameContent = {
+      'mujer-mujer': {
+        wheel: [
+          { challenge: "Una provoca a la otra con un striptease mientras bailan", product: 'noche-pareja' },
+          { challenge: "Masajea a tu pareja con lubricante íntimo aromático", product: 'masaje' },
+          { challenge: "Usen juntas el vibrador de alta intensidad", product: 'placer-femenino' },
+          { challenge: "Datos eróticos para parejas: sigan el reto que sale", product: 'noche-pareja' },
+          { challenge: "Lubricante anal para exploración segura juntas", product: 'exploración-anal' },
+          { challenge: "Controlen el vibrador con app entre ustedes", product: 'juguete-app' },
+          { challenge: "Role play: inventan una fantasía y la actúan", product: 'fantasia' },
+          { challenge: "Bondage de confianza: aten y desaten con cuidado", product: 'bondage-inicial' },
+          { challenge: "Masaje corporal largo con aceite aromático", product: 'masaje' },
+          { challenge: "Lubricante frío-calor: experimenten sensaciones nuevas", product: 'masaje' },
+          { challenge: "Intercambien un masaje de pies mientras se cuentan una fantasía", product: 'masaje' },
+          { challenge: "Prueben el kit de primera vez juntas, paso a paso y sin prisa", product: 'primera-vez' },
+          { challenge: "Una venda los ojos de la otra y la sorprende con caricias", product: 'masaje' },
+          { challenge: "Jueguen con hielo y velas de masaje para sentir contrastes de temperatura", product: 'masaje' },
+          { challenge: "Una elige la posición, la otra controla el ritmo del vibrador", product: 'placer-femenino' },
+          { challenge: "Escriban juntas 3 fantasías en papelitos y cumplan una al azar", product: 'fantasia' },
+          { challenge: "Practiquen bondage suave con pañuelos de seda, siempre con confianza", product: 'bondage-inicial' },
+          { challenge: "Compartan un baño caliente y terminen con un masaje relajante", product: 'masaje' },
+          { challenge: "Una dirige a la otra a distancia usando el juguete con app", product: 'juguete-app' },
+          { challenge: "Creen una escena de seducción con música y luces bajas", product: 'noche-pareja' }
+        ],
+        dice: [
+          { scenario: 'Besos + Caricias apasionadas', product: 'noche-pareja' },
+          { scenario: 'Masaje + Relajación total', product: 'masaje' },
+          { scenario: 'Vibrador + Variedad de ritmos', product: 'placer-femenino' },
+          { scenario: 'Exploración + Seguridad', product: 'exploración-anal' },
+          { scenario: 'Fantasía + Riesgo calculado', product: 'fantasia' },
+          { scenario: 'Bondage + Confianza mutua', product: 'bondage-inicial' }
+        ],
+        cards: [
+          { text: 'Masaje sensual con aceite', product: 'masaje' },
+          { text: 'Vibrador juntas a ritmo', product: 'placer-femenino' },
+          { text: 'Exploración anal con cuidado', product: 'exploración-anal' },
+          { text: 'Dados eróticos para parejas', product: 'noche-pareja' },
+          { text: 'Control remoto a distancia', product: 'juguete-app' },
+          { text: 'Fantasía romántica cumplida', product: 'fantasia' },
+          { text: 'Bondage de confianza', product: 'bondage-inicial' },
+          { text: 'Lubricante especial frío-calor', product: 'masaje' }
+        ]
+      },
+      'hombre-hombre': {
+        wheel: [
+          { challenge: "Uno provoca al otro con striptease sexy", product: 'noche-pareja' },
+          { challenge: "Masaje apasionado con lubricante íntimo de calidad", product: 'masaje' },
+          { challenge: "Anillo vibrador para máxima sensación conjunta", product: 'placer-masculino' },
+          { challenge: "Retardante: control y resistencia sin prisa", product: 'placer-masculino' },
+          { challenge: "Lubricante anal premium para exploración segura", product: 'exploración-anal' },
+          { challenge: "Control por app: uno sorprende al otro a distancia", product: 'juguete-app' },
+          { challenge: "Role play intenso: actúan una fantasía juntos", product: 'fantasia' },
+          { challenge: "Bondage: aten y desaten con máxima confianza", product: 'bondage-inicial' },
+          { challenge: "Datos eróticos gay: sigan cada reto", product: 'noche-pareja' },
+          { challenge: "Masaje anal: exploren juntos sensaciones nuevas", product: 'exploración-anal' },
+          { challenge: "Practiquen un masaje de pies antes del masaje completo", product: 'masaje' },
+          { challenge: "Prueben el kit de primera vez juntos, sin prisa", product: 'primera-vez' },
+          { challenge: "Uno venda los ojos del otro y lo sorprende con caricias", product: 'masaje' },
+          { challenge: "Jueguen con hielo y velas de masaje para sentir contrastes de temperatura", product: 'masaje' },
+          { challenge: "Uno elige la posición, el otro controla el ritmo con el anillo vibrador", product: 'placer-masculino' },
+          { challenge: "Escriban juntos 3 fantasías en papelitos y cumplan una al azar", product: 'fantasia' },
+          { challenge: "Practiquen bondage suave con pañuelos, siempre con confianza", product: 'bondage-inicial' },
+          { challenge: "Compartan una ducha caliente y terminen con un masaje relajante", product: 'masaje' },
+          { challenge: "Uno dirige al otro a distancia usando el juguete con app", product: 'juguete-app' },
+          { challenge: "Creen una escena de seducción con música y luces bajas", product: 'noche-pareja' }
+        ],
+        dice: [
+          { scenario: 'Besos + Control passion', product: 'noche-pareja' },
+          { scenario: 'Masaje + Ritmo lento', product: 'masaje' },
+          { scenario: 'Anillo + Intensidad máxima', product: 'placer-masculino' },
+          { scenario: 'Retardante + Resistencia', product: 'placer-masculino' },
+          { scenario: 'Anal + Lubricante especial', product: 'exploración-anal' },
+          { scenario: 'Bondage + Confianza total', product: 'bondage-inicial' }
+        ],
+        cards: [
+          { text: 'Masaje intenso', product: 'masaje' },
+          { text: 'Anillo vibrador para dos', product: 'placer-masculino' },
+          { text: 'Retardante de lujo', product: 'placer-masculino' },
+          { text: 'Exploración anal segura', product: 'exploración-anal' },
+          { text: 'Dados eróticos gay', product: 'noche-pareja' },
+          { text: 'Control remoto sorpresa', product: 'juguete-app' },
+          { text: 'Bondage sensual', product: 'bondage-inicial' },
+          { text: 'Fantasía cumplida juntos', product: 'fantasia' }
+        ]
+      },
+      'hombre-mujer': {
+        wheel: [
+          { challenge: "Ella lo provoca con striptease lento mientras él observa", product: 'noche-pareja' },
+          { challenge: "Él la masajea con lubricante íntimo mientras susurra al oído", product: 'masaje' },
+          { challenge: "Usa el vibrador juntos mientras se besan apasionadamente", product: 'placer-femenino' },
+          { challenge: "Ella toma el control del anillo vibrador en él", product: 'placer-masculino' },
+          { challenge: "Dados eróticos: sigan cada reto que sale", product: 'noche-pareja' },
+          { challenge: "Ella lo acaricia lentamente mientras él susurra fantasías", product: 'exploración-anal' },
+          { challenge: "Lubricante frío-calor: experimenten juntos sensaciones nuevas", product: 'masaje' },
+          { challenge: "Él controla el vibrador por app mientras ella no ve", product: 'juguete-app' },
+          { challenge: "Juego de roles: ella se viste sexy y actúa un encuentro casual", product: 'fantasia' },
+          { challenge: "Exploración: lubricante anal especial y máxima confianza", product: 'exploración-anal' },
+          { challenge: "Practiquen un masaje de pies antes del masaje completo", product: 'masaje' },
+          { challenge: "Prueben juntos el kit de primera vez, sin prisa", product: 'primera-vez' },
+          { challenge: "Él le venda los ojos y la sorprende con caricias", product: 'masaje' },
+          { challenge: "Jueguen con hielo y velas de masaje para sentir contrastes de temperatura", product: 'masaje' },
+          { challenge: "Ella controla el vibrador con app mientras él espera", product: 'juguete-app' },
+          { challenge: "Escriban juntos 3 fantasías en papelitos y cumplan una al azar", product: 'fantasia' },
+          { challenge: "Practiquen bondage suave con pañuelos de seda, siempre con confianza", product: 'bondage-inicial' },
+          { challenge: "Compartan una ducha caliente y terminen con un masaje relajante", product: 'masaje' },
+          { challenge: "Él la dirige a distancia usando el juguete con app", product: 'juguete-app' },
+          { challenge: "Creen una escena de seducción con música y luces bajas", product: 'noche-pareja' }
+        ],
+        dice: [
+          { scenario: 'Besos + Provocación mutua', product: 'noche-pareja' },
+          { scenario: 'Masaje + Lubricante especial', product: 'masaje' },
+          { scenario: 'Vibrador + Ritmo variado', product: 'placer-femenino' },
+          { scenario: 'Anillo + Pasión sin freno', product: 'placer-masculino' },
+          { scenario: 'Anal + Máxima seguridad', product: 'exploración-anal' },
+          { scenario: 'App + Sorpresa inesperada', product: 'juguete-app' }
+        ],
+        cards: [
+          { text: 'Lubricante frío-calor', product: 'masaje' },
+          { text: 'Vibrador juntos', product: 'placer-femenino' },
+          { text: 'Ella toma el control', product: 'placer-masculino' },
+          { text: 'Exploración anal segura', product: 'exploración-anal' },
+          { text: 'Dados eróticos hetero', product: 'noche-pareja' },
+          { text: 'Vibrador con control remoto', product: 'juguete-app' },
+          { text: 'Noche de fantasía', product: 'fantasia' },
+          { text: 'Bondage inicial', product: 'bondage-inicial' }
+        ]
+      },
+      'grupo': {
+        wheel: [
+          { challenge: "Todos bailan sensualmente en círculo", product: 'noche-pareja' },
+          { challenge: "Ronda de masajes: cada uno masajea al siguiente", product: 'masaje' },
+          { challenge: "Todos juegan con los datos eróticos de grupo", product: 'noche-pareja' },
+          { challenge: "Ronda de verdad o desafío picante", product: 'fantasia' },
+          { challenge: "Todos se dan masaje en círculo", product: 'masaje' },
+          { challenge: "Datos de grupo: desafíos para parejas dentro del grupo", product: 'noche-pareja' },
+          { challenge: "Juego de roles en grupo: actúan una escena juntos", product: 'fantasia' },
+          { challenge: "Todos experimentan con lubricante aromático", product: 'masaje' },
+          { challenge: "Carrera de verdades atrevidas en círculo", product: 'fantasia' },
+          { challenge: "Desafío de sensibilidad: con los ojos vendados", product: 'masaje' },
+          { challenge: "Ronda de masaje de pies antes del masaje completo", product: 'masaje' },
+          { challenge: "Presenten el kit de primera vez a quien quiera probarlo", product: 'primera-vez' },
+          { challenge: "Juego de vendas: uno a la vez recibe caricias con los ojos vendados", product: 'masaje' },
+          { challenge: "Ronda con hielo y velas de masaje para sentir contrastes de temperatura", product: 'masaje' },
+          { challenge: "Elige a alguien del grupo para dirigir un reto con el juguete con app", product: 'juguete-app' },
+          { challenge: "Cada uno escribe una fantasía en un papel y se sortean al azar", product: 'fantasia' },
+          { challenge: "Ronda de bondage suave con pañuelos, siempre con consentimiento", product: 'bondage-inicial' },
+          { challenge: "Círculo de confesiones picantes con premio sorpresa", product: 'noche-pareja' },
+          { challenge: "Reto de seducción: cada uno improvisa 30 segundos de baile", product: 'noche-pareja' },
+          { challenge: "Ronda de preguntas atrevidas con castigo de masaje", product: 'masaje' }
+        ],
+        dice: [
+          { scenario: 'Baile sensual grupal', product: 'noche-pareja' },
+          { scenario: 'Ronda de masajes', product: 'masaje' },
+          { scenario: 'Juego de atrevimientos', product: 'fantasia' },
+          { scenario: 'Datos eróticos de grupo', product: 'noche-pareja' },
+          { scenario: 'Verdad o desafío picante', product: 'fantasia' },
+          { scenario: 'Experimentación en grupo', product: 'masaje' }
+        ],
+        cards: [
+          { text: 'Baile grupal sensual', product: 'noche-pareja' },
+          { text: 'Masajes en círculo', product: 'masaje' },
+          { text: 'Datos eróticos de grupo', product: 'noche-pareja' },
+          { text: 'Verdad o desafío extremo', product: 'fantasia' },
+          { text: 'Experimentar con lubricante', product: 'masaje' },
+          { text: 'Role play grupal', product: 'fantasia' },
+          { text: 'Ronda de confesiones', product: 'fantasia' },
+          { text: 'Desafío sensorial grupal', product: 'masaje' }
+        ]
+      }
+    };
 
-          function spinWheel() {
-                  const content = gameContent[parejaType].wheel;
-                  const btn = document.getElementById('spinBtn');
-                  btn.disabled = true;
+    const CATALOG_URL = 'https://multiproductos.pro/catalogo';
 
-            const wheel = document.getElementById('wheel');
-                  wheel.classList.add('spinning');
+    const productLinks = {
+      'primera-vez': { name: 'Kit Primera Vez', price: '$52.470', url: CATALOG_URL },
+      'noche-pareja': { name: 'Kit Noche en Pareja', price: '$62.910', url: CATALOG_URL },
+      'placer-femenino': { name: 'Kit Placer Femenino', price: '$97.020', url: CATALOG_URL },
+      'placer-masculino': { name: 'Kit Placer Masculino', price: '$74.700', url: CATALOG_URL },
+      'exploración-anal': { name: 'Kit Exploración Anal', price: '$81.720', url: CATALOG_URL },
+      'juguete-app': { name: 'Kit Juguete con App', price: '$170.010', url: CATALOG_URL },
+      'masaje': { name: 'Kit de Masaje', price: '$90.711', url: CATALOG_URL },
+      'fantasia': { name: 'Kit Fantasía', price: '$49.860', url: CATALOG_URL },
+      'bondage-inicial': { name: 'Kit Bondage Inicial', price: '$81.720', url: CATALOG_URL }
+    };
 
-            setTimeout(() => {
-                      wheel.classList.remove('spinning');
-                      const selected = content[Math.floor(Math.random() * content.length)];
-                      showWheelResult(selected);
-                      btn.disabled = false;
-            }, 4000);
-          }
+    function setParejaType(type) {
+      parejaType = type;
+      playerCount = null;
+      document.querySelectorAll('.pareja-btn').forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
 
-          function showWheelResult(result) {
-                  const resultDiv = document.getElementById('wheelResult');
-                  resultDiv.innerHTML = `<h3>${result.challenge}</h3>`;
-                  renderProductSuggestion('wheelProducts', result.product);
-          }
+      setTimeout(() => {
+        document.getElementById('selectionScreen').style.display = 'none';
+        document.getElementById('gamesScreen').classList.add('active');
+      }, 300);
+    }
 
-          function rollDice() {
-                  const content = gameContent[parejaType].dice;
-                  const btn = document.getElementById('diceBtn');
-                  btn.disabled = true;
+    function setGroupGame() {
+      const count = parseInt(document.getElementById('playerCount').value);
+      if (count < 3 || count > 10) {
+        alert('Por favor ingresa un número entre 3 y 10 jugadores');
+        return;
+      }
+      parejaType = 'grupo';
+      playerCount = count;
+      document.getElementById('selectionScreen').style.display = 'none';
+      document.getElementById('gamesScreen').classList.add('active');
+    }
 
-            const dice1 = document.getElementById('dice1');
-                  const dice2 = document.getElementById('dice2');
+    function goBackToSelection() {
+      document.getElementById('gamesScreen').classList.remove('active');
+      document.getElementById('selectionScreen').style.display = 'block';
+      document.querySelectorAll('.pareja-btn').forEach(btn => btn.classList.remove('active'));
+    }
 
-            let rolls = 0;
-                  const rollInterval = setInterval(() => {
-                            const num1 = Math.floor(Math.random() * 6) + 1;
-                            const num2 = Math.floor(Math.random() * 6) + 1;
-                            dice1.textContent = num1;
-                            dice2.textContent = num2;
-                            rolls++;
+    function startGame(gameType) {
+      document.getElementById('gamesScreen').classList.remove('active');
 
-                                                           if (rolls === 15) {
-                                                                       clearInterval(rollInterval);
-                                                                       const selected = content[Math.floor(Math.random() * content.length)];
-                                                                       showDiceResult(selected);
-                                                                       btn.disabled = false;
-                                                           }
-                  }, 100);
-          }
+      if (gameType === 'wheel') {
+        document.getElementById('wheelGame').classList.add('active');
+      } else if (gameType === 'dice') {
+        document.getElementById('diceGame').classList.add('active');
+      } else if (gameType === 'cards') {
+        document.getElementById('cardsGame').classList.add('active');
+        generateCards();
+      } else if (gameType === 'list') {
+        document.getElementById('listGame').classList.add('active');
+        renderChallengesList();
+      }
+    }
 
-          function showDiceResult(result) {
-                  const resultDiv = document.getElementById('diceResult');
-                  resultDiv.innerHTML = `<h3>${result.scenario}</h3>`;
-                  renderProductSuggestion('diceProducts', result.product);
-          }
+    function backToGames() {
+      document.getElementById('wheelGame').classList.remove('active');
+      document.getElementById('diceGame').classList.remove('active');
+      document.getElementById('cardsGame').classList.remove('active');
+      document.getElementById('listGame').classList.remove('active');
+      document.getElementById('gamesScreen').classList.add('active');
+      document.getElementById('wheelResult').innerHTML = '';
+      document.getElementById('diceResult').innerHTML = '';
+      document.getElementById('cardResult').innerHTML = '';
+      document.getElementById('wheelProducts').innerHTML = '';
+      document.getElementById('diceProducts').innerHTML = '';
+      document.getElementById('cardProducts').innerHTML = '';
+    }
 
-          function generateCards() {
-                  const content = gameContent[parejaType].cards;
-                  const container = document.getElementById('cardsContainer');
-                  container.innerHTML = '';
+    function spinWheel() {
+      const content = gameContent[parejaType].wheel;
+      const btn = document.getElementById('spinBtn');
+      btn.disabled = true;
 
-            content.forEach((card, index) => {
-                      const cardEl = document.createElement('div');
-                      cardEl.className = 'card';
-                      cardEl.textContent = '❓';
-                      cardEl.onclick = () => flipCard(cardEl, card, index);
-                      container.appendChild(cardEl);
-            });
-          }
+      const wheel = document.getElementById('wheel');
+      wheel.classList.add('spinning');
 
-          function flipCard(cardEl, card, index) {
-                  if (cardEl.classList.contains('flipped')) return;
+      setTimeout(() => {
+        wheel.classList.remove('spinning');
+        const selected = content[Math.floor(Math.random() * content.length)];
+        showWheelResult(selected);
+        btn.disabled = false;
+      }, 4000);
+    }
 
-            cardEl.classList.add('flipped');
-                  cardEl.textContent = card.text;
+    function showWheelResult(result) {
+      const resultDiv = document.getElementById('wheelResult');
+      resultDiv.innerHTML = `<h3>${result.challenge}</h3>`;
+      renderProductSuggestion('wheelProducts', result.product);
+    }
 
-            challengePlayCount++;
-                  const resultDiv = document.getElementById('cardResult');
-                  let html = `<h3>${card.text}</h3>`;
+    function rollDice() {
+      const content = gameContent[parejaType].dice;
+      const btn = document.getElementById('diceBtn');
+      btn.disabled = true;
 
-            if (challengePlayCount % SUGGESTION_EVERY === 0) {
-                      const product = productLinks[card.product];
-                      html += `
-                                <div class="product-item" style="margin-top: 15px; justify-content: center;">
-                                            <strong>${product.name}</strong>
-                                                      </div>
-                                                                <button class="add-cart-btn" onclick="window.open('${product.url}', '_blank')" style="margin-top: 10px;">Ver sugerencia</button>
-                                                                        `;
-            }
+      const dice1 = document.getElementById('dice1');
+      const dice2 = document.getElementById('dice2');
 
-            resultDiv.innerHTML = html;
-          }
+      let rolls = 0;
+      const rollInterval = setInterval(() => {
+        const num1 = Math.floor(Math.random() * 6) + 1;
+        const num2 = Math.floor(Math.random() * 6) + 1;
+        dice1.textContent = num1;
+        dice2.textContent = num2;
+        rolls++;
 
-          // Muestra una sugerencia de producto solo cada SUGGESTION_EVERY jugadas,
-          // para no interrumpir el juego con publicidad en cada ronda.
-          // La sugerencia incluye el enlace, sin mostrar el precio.
-          function renderProductSuggestion(containerId, productKey) {
-                  challengePlayCount++;
-                  const container = document.getElementById(containerId);
+        if (rolls === 15) {
+          clearInterval(rollInterval);
+          const selected = content[Math.floor(Math.random() * content.length)];
+          showDiceResult(selected);
+          btn.disabled = false;
+        }
+      }, 100);
+    }
 
-            if (challengePlayCount % SUGGESTION_EVERY !== 0) {
-                      container.innerHTML = '';
-                      return;
-            }
+    function showDiceResult(result) {
+      const resultDiv = document.getElementById('diceResult');
+      resultDiv.innerHTML = `<h3>${result.scenario}</h3>`;
+      renderProductSuggestion('diceProducts', result.product);
+    }
 
-            const product = productLinks[productKey];
-                  container.innerHTML = `
-                          <h4>🎁 Sugerencia de Producto</h4>
-                                  <div class="product-item">
-                                            <strong>${product.name}</strong>
-                                                    </div>
-                                                            <button class="add-cart-btn" onclick="window.open('${product.url}', '_blank')">Ver sugerencia</button>
-                                                                  `;
-          }
+    function generateCards() {
+      const content = gameContent[parejaType].cards;
+      const container = document.getElementById('cardsContainer');
+      container.innerHTML = '';
 
-          // Retos Ya Inscritos: lista completa (no aleatoria) de los retos disponibles
-          // para el tipo de jugadores elegido. Los productos son solo sugerencias.
-          function renderChallengesList() {
-                  const content = gameContent[parejaType].wheel;
-                  const container = document.getElementById('challengesList');
-                  container.innerHTML = '';
+      content.forEach((card, index) => {
+        const cardEl = document.createElement('div');
+        cardEl.className = 'card';
+        cardEl.textContent = '❓';
+        cardEl.onclick = () => flipCard(cardEl, card, index);
+        container.appendChild(cardEl);
+      });
+    }
 
-            content.forEach((item, index) => {
-                      const product = productLinks[item.product];
-                      const itemEl = document.createElement('div');
-                      itemEl.className = 'challenge-item';
+    function flipCard(cardEl, card, index) {
+      if (cardEl.classList.contains('flipped')) return;
 
-                                    let html = `<div class="challenge-text"><span class="challenge-number">${index + 1}.</span> ${item.challenge}</div>`;
+      cardEl.classList.add('flipped');
+      cardEl.textContent = card.text;
 
-                                    if (product) {
-                                                html += `
-                                                            <div class="suggestion-tag">
-                                                                          <span><span class="suggestion-label">💡 Sugerencia (opcional)</span>${product.name}</span>
-                                                                                        <button class="add-cart-btn" onclick="window.open('${product.url}', '_blank')">Ver sugerencia</button>
-                                                                                                    </div>
-                                                                                                              `;
-                                    }
+      challengePlayCount++;
+      const resultDiv = document.getElementById('cardResult');
+      let html = `<h3>${card.text}</h3>`;
 
-                                    itemEl.innerHTML = html;
-                      container.appendChild(itemEl);
-            });
-          }
-</script>
-  </body>
+      if (challengePlayCount % SUGGESTION_EVERY === 0) {
+        const product = productLinks[card.product];
+        html += `
+          <div class="product-item" style="margin-top: 15px; justify-content: center;">
+            <strong>${product.name}</strong>
+          </div>
+          <button class="add-cart-btn" onclick="window.open('${product.url}', '_blank')" style="margin-top: 10px;">Ver sugerencia</button>
+        `;
+      }
+
+      resultDiv.innerHTML = html;
+    }
+
+    // Muestra una sugerencia de producto solo cada SUGGESTION_EVERY jugadas,
+    // para no interrumpir el juego con publicidad en cada ronda.
+    // La sugerencia incluye el enlace, sin mostrar el precio.
+    function renderProductSuggestion(containerId, productKey) {
+      challengePlayCount++;
+      const container = document.getElementById(containerId);
+
+      if (challengePlayCount % SUGGESTION_EVERY !== 0) {
+        container.innerHTML = '';
+        return;
+      }
+
+      const product = productLinks[productKey];
+      container.innerHTML = `
+        <h4>🎁 Sugerencia de Producto</h4>
+        <div class="product-item">
+          <strong>${product.name}</strong>
+        </div>
+        <button class="add-cart-btn" onclick="window.open('${product.url}', '_blank')">Ver sugerencia</button>
+      `;
+    }
+
+    // Retos Ya Inscritos: lista completa (no aleatoria) de los retos disponibles
+    // para el tipo de jugadores elegido. Los productos son solo sugerencias.
+    function renderChallengesList() {
+      const content = gameContent[parejaType].wheel;
+      const container = document.getElementById('challengesList');
+      container.innerHTML = '';
+
+      content.forEach((item, index) => {
+        const product = productLinks[item.product];
+        const itemEl = document.createElement('div');
+        itemEl.className = 'challenge-item';
+
+        let html = `<div class="challenge-text"><span class="challenge-number">${index + 1}.</span> ${item.challenge}</div>`;
+
+        if (product) {
+          html += `
+            <div class="suggestion-tag">
+              <span><span class="suggestion-label">💡 Sugerencia (opcional)</span>${product.name}</span>
+              <button class="add-cart-btn" onclick="window.open('${product.url}', '_blank')">Ver sugerencia</button>
+            </div>
+          `;
+        }
+
+        itemEl.innerHTML = html;
+        container.appendChild(itemEl);
+      });
+    }
+  </script>
+</body>
 </html>
