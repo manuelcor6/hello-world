@@ -431,8 +431,8 @@
 
     let playCount = 0;
     let currentIndex = null;
-    let bag = [];
-.product-item {
+    let bag = []; let customChallenges = []; const RANDOM_DISCOUNTS = [5, 10, 15, 20]; const FREE_SHIPPING_AFTER = 80; const FREE_SHIPPING_MIN_ORDER = '$70.000'; function getPromoHTML() { if (playCount >= FREE_SHIPPING_AFTER) { return '<div class="discount-badge">🚚 ¡Envio GRATIS! <small>(Pedido minimo ' + FREE_SHIPPING_MIN_ORDER + ')</small></div>'; } const d = RANDOM_DISCOUNTS[Math.floor(Math.random() * RANDOM_DISCOUNTS.length)]; return '<div class="discount-badge">🎉 ' + d + '% de descuento</div>'; }
+
     function loadCustomChallenges() {
       try {
         const raw = localStorage.getItem(CUSTOM_KEY);
