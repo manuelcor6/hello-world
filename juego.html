@@ -72,7 +72,7 @@
     }
 
     .pareja-btn {
-      padding: 12px 25px;
+      padding: 14px 24px;
       border: 2px solid #ff1493;
       background: white;
       color: #ff1493;
@@ -80,16 +80,29 @@
       cursor: pointer;
       font-size: 1em;
       font-weight: 600;
-      transition: all 0.3s;
+      transition: all 0.2s ease;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .pareja-btn.active {
       background: #ff1493;
       color: white;
+      box-shadow: 0 4px 12px rgba(255, 20, 147, 0.3);
     }
 
     .pareja-btn:hover {
       transform: scale(1.05);
+    }
+
+    .pareja-btn:active {
+      transform: scale(0.97);
+      opacity: 0.9;
     }
 
     .games-grid {
@@ -105,14 +118,21 @@
       padding: 30px;
       border-radius: 15px;
       cursor: pointer;
-      transition: all 0.3s;
+      transition: all 0.2s ease;
       text-align: center;
       box-shadow: 0 10px 30px rgba(255, 20, 147, 0.3);
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
     }
 
     .game-card:hover {
       transform: translateY(-10px);
       box-shadow: 0 15px 40px rgba(255, 20, 147, 0.4);
+    }
+
+    .game-card:active {
+      transform: translateY(-5px) scale(0.98);
     }
 
     .game-card h3 {
@@ -201,23 +221,33 @@
       background: linear-gradient(135deg, #ff1493 0%, #ff69b4 100%);
       color: white;
       border: none;
-      padding: 15px 40px;
+      padding: 16px 40px;
       font-size: 1.1em;
       border-radius: 25px;
       cursor: pointer;
       font-weight: 600;
-      transition: all 0.3s;
+      transition: all 0.2s ease;
       margin: 15px 0;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
+      min-height: 48px;
+      box-shadow: 0 4px 15px rgba(255, 20, 147, 0.3);
     }
 
     .spin-btn:hover, .dice-btn:hover, .card-btn:hover {
       transform: scale(1.05);
-      box-shadow: 0 10px 25px rgba(255, 20, 147, 0.4);
+      box-shadow: 0 8px 25px rgba(255, 20, 147, 0.4);
+    }
+
+    .spin-btn:active, .dice-btn:active, .card-btn:active {
+      transform: scale(0.97);
     }
 
     .spin-btn:disabled, .dice-btn:disabled, .card-btn:disabled {
-      opacity: 0.5;
+      opacity: 0.6;
       cursor: not-allowed;
+      transform: none;
     }
 
     .result {
@@ -449,9 +479,14 @@
       <div>
         <h3 style="color: #ff1493; margin-bottom: 15px;">🎉 Juego Entre Varios</h3>
         <div style="text-align: center;">
-          <label for="playerCount" style="font-size: 1.1em; color: #333; margin-right: 10px;">¿Cuántos jugadores?</label>
-          <input type="number" id="playerCount" min="3" max="10" value="3" style="width: 80px; padding: 10px; font-size: 1em; border: 2px solid #ff1493; border-radius: 8px;">
-          <button class="pareja-btn" onclick="setGroupGame()" style="margin-left: 10px;">Jugar en Grupo 🎲</button>
+          <div style="margin-bottom: 15px;">
+            <label style="font-size: 1em; color: #333; display: block; margin-bottom: 10px;">¿Cuántos jugadores? (3-10)</label>
+            <div style="display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;">
+              <button class="pareja-btn" onclick="setGroupGame(3)" style="flex: 0 1 auto;">3 Jugadores</button>
+              <button class="pareja-btn" onclick="setGroupGame(4)" style="flex: 0 1 auto;">4 Jugadores</button>
+              <button class="pareja-btn" onclick="setGroupGame(5)" style="flex: 0 1 auto;">5+ Jugadores</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -684,11 +719,9 @@
       }, 300);
     }
 
-    function setGroupGame() {
-      const count = parseInt(document.getElementById('playerCount').value);
-      if (count < 3 || count > 10) {
-        alert('Por favor ingresa un número entre 3 y 10 jugadores');
-        return;
+    function setGroupGame(count) {
+      if (!count || count < 3 || count > 10) {
+        count = 3;
       }
       parejaType = 'grupo';
       playerCount = count;
