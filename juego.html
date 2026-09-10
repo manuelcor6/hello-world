@@ -388,6 +388,39 @@
       .games-grid {
         grid-template-columns: 1fr;
       }
+
+      .pareja-btn, .spin-btn, .dice-btn, .card-btn {
+        -webkit-user-select: none;
+        -webkit-touch-callout: none;
+        padding: 15px 20px;
+        font-size: 16px;
+        min-height: 44px;
+      }
+
+      .game-card {
+        min-height: 120px;
+      }
+
+      .card {
+        min-height: 80px;
+      }
+
+      .dice {
+        width: 70px;
+        height: 70px;
+        font-size: 1.8em;
+      }
+    }
+
+    @media (hover: none) {
+      .pareja-btn:active,
+      .spin-btn:active,
+      .dice-btn:active,
+      .card-btn:active,
+      .game-card:active {
+        transform: scale(0.98);
+        opacity: 0.8;
+      }
     }
   </style>
 </head>
@@ -405,9 +438,9 @@
       <div style="margin-bottom: 30px;">
         <h3 style="color: #ff1493; margin-bottom: 15px;">👫 Pareja</h3>
         <div class="pareja-selector">
-          <button class="pareja-btn" onclick="setParejaType('mujer-mujer')">👩‍👩 Mujer + Mujer</button>
-          <button class="pareja-btn" onclick="setParejaType('hombre-hombre')">👨‍👨 Hombre + Hombre</button>
-          <button class="pareja-btn" onclick="setParejaType('hombre-mujer')">👨‍👩 Hombre + Mujer</button>
+          <button class="pareja-btn" onclick="setParejaType('mujer-mujer', this)">👩‍👩 Mujer + Mujer</button>
+          <button class="pareja-btn" onclick="setParejaType('hombre-hombre', this)">👨‍👨 Hombre + Hombre</button>
+          <button class="pareja-btn" onclick="setParejaType('hombre-mujer', this)">👨‍👩 Hombre + Mujer</button>
         </div>
       </div>
 
@@ -639,11 +672,11 @@
       'bondage-inicial': { name: 'Kit Bondage Inicial', price: '$81.720', url: 'https://www.ohyes.com.co/carrito/?kit=bondage-inicial' }
     };
 
-    function setParejaType(type) {
+    function setParejaType(type, btn) {
       parejaType = type;
       playerCount = null;
-      document.querySelectorAll('.pareja-btn').forEach(btn => btn.classList.remove('active'));
-      event.target.classList.add('active');
+      document.querySelectorAll('.pareja-btn').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
 
       setTimeout(() => {
         document.getElementById('selectionScreen').style.display = 'none';
