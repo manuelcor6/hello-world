@@ -516,7 +516,7 @@
           ? `
           <h4>🎁 Sugerencia de producto (opcional)</h4>
           <div class="product-item">${product.name} ${getPromoHTML()}</div>
-          <button class="add-cart-btn" onclick="window.open('${product.url}', '_blank')">Ver sugerencia</button><button class="whatsapp-btn" onclick="window.open('https://wa.me/573005208008?text=' + encodeURIComponent('Hola Carolina! Quiero mi descuento/envio gratis del Juego del Deseo'), '_blank')">Pideselo a Carolina</button><small class="promo-note">Bonos y cupones no son acumulables, solo se puede usar uno por pedido.</small>
+          <button class="add-cart-btn" onclick="window.open('${product.url}', '_blank')">Ver sugerencia</button><button class="whatsapp-btn" onclick="window.location.href = 'https://wa.me/573005208008?text=' + encodeURIComponent('Hola Carolina! Quiero mi descuento/envio gratis del Juego del Deseo')">Pideselo a Carolina</button><small class="promo-note">Bonos y cupones no son acumulables, solo se puede usar uno por pedido.</small>
           <div class="catalog-line">
             <button class="catalog-btn" onclick="window.open('${CATALOG_URL}', '_blank')">📖 Ver catálogo completo en multiproductos.pro</button>
           </div>
