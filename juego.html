@@ -191,7 +191,7 @@
       color: white;
     }
 
-    .customize {
+    .whatsapp-btn { background: #25D366; color: white; border: none; padding: 8px 18px; border-radius: 20px; cursor: pointer; font-weight: 600; font-family: inherit; font-size: 0.9em; transition: all 0.3s; margin-top: 8px; display: inline-block; } .whatsapp-btn:hover { background: #1ebe57; } .customize {
       text-align: center;
       margin-top: 20px;
     }
@@ -516,7 +516,7 @@
           ? `
           <h4>🎁 Sugerencia de producto (opcional)</h4>
           <div class="product-item">${product.name} ${getPromoHTML()}</div>
-          <button class="add-cart-btn" onclick="window.open('${product.url}', '_blank')">Ver sugerencia</button>
+          <button class="add-cart-btn" onclick="window.open('${product.url}', '_blank')">Ver sugerencia</button><button class="whatsapp-btn" onclick="window.open('https://wa.me/573005208008?text=' + encodeURIComponent('Hola Carolina! Quiero mi descuento/envio gratis del Juego del Deseo'), '_blank')">Pideselo a Carolina</button>
           <div class="catalog-line">
             <button class="catalog-btn" onclick="window.open('${CATALOG_URL}', '_blank')">📖 Ver catálogo completo en multiproductos.pro</button>
           </div>
