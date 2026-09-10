@@ -431,7 +431,7 @@
 
     let playCount = 0;
     let currentIndex = null;
-    let bag = []; let customChallenges = []; const RANDOM_DISCOUNTS = [5, 10, 15, 20]; const FREE_SHIPPING_AFTER = 80; const FREE_SHIPPING_MIN_ORDER = '$70.000'; function getPromoHTML() { if (playCount >= FREE_SHIPPING_AFTER) { return '<div class="discount-badge">🚚 ¡Envio GRATIS! <small>(Pedido minimo ' + FREE_SHIPPING_MIN_ORDER + ')</small></div>'; } const d = RANDOM_DISCOUNTS[Math.floor(Math.random() * RANDOM_DISCOUNTS.length)]; return '<div class="discount-badge">🎉 ' + d + '% de descuento</div>'; }
+    let bag = []; let customChallenges = []; const RANDOM_DISCOUNTS = [5, 10, 15, 20]; const FREE_SHIPPING_AFTER = 80; const FREE_SHIPPING_MIN_ORDER = '$70.000'; function getPromo() { if (playCount >= FREE_SHIPPING_AFTER) { return { html: '<div class="discount-badge">🚚 ¡Envio GRATIS! <small>(Pedido minimo ' + FREE_SHIPPING_MIN_ORDER + ')</small></div>', text: 'envio GRATIS (pedido minimo ' + FREE_SHIPPING_MIN_ORDER + ')' }; } const d = RANDOM_DISCOUNTS[Math.floor(Math.random() * RANDOM_DISCOUNTS.length)]; return { html: '<div class="discount-badge">🎉 ' + d + '% de descuento</div>', text: d + '% de descuento' }; }
 
     function loadCustomChallenges() {
       try {
@@ -512,11 +512,13 @@
       if (playCount % 5 === 0) {
         suggestionDiv.style.display = 'block';
         const product = item.product ? productLinks[item.product] : null;
+        const promo = product ? getPromo() : null;
+        const waText = product ? ('Hola Carolina! Vengo del Juego del Deseo. Mi reto es sobre "' + product.name + '" y quiero mi ' + promo.text + '. Me interesa que me asesores sobre este producto.') : '';
         suggestionDiv.innerHTML = product
           ? `
           <h4>🎁 Sugerencia de producto (opcional)</h4>
-          <div class="product-item">${product.name} ${getPromoHTML()}</div>
-          <button class="add-cart-btn" onclick="window.open('${product.url}', '_blank')">Ver sugerencia</button><a class="whatsapp-btn" href="https://api.whatsapp.com/send?phone=573005208008&text=${encodeURIComponent('Hola Carolina! Quiero mi descuento/envio gratis del Juego del Deseo')}" target="_top" rel="noopener">Pideselo a Carolina</a><small class="promo-note">Bonos y cupones no son acumulables, solo se puede usar uno por pedido.</small>
+          <div class="product-item">${product.name} ${promo.html}</div>
+          <button class="add-cart-btn" onclick="window.open('${product.url}', '_blank')">Ver sugerencia</button><a class="whatsapp-btn" href="https://api.whatsapp.com/send?phone=573005208008&text=${encodeURIComponent(waText)}" target="_top" rel="noopener">Pideselo a Carolina</a><small class="promo-note">Bonos y cupones no son acumulables, solo se puede usar uno por pedido.</small>
           <div class="catalog-line">
             <button class="catalog-btn" onclick="window.open('${CATALOG_URL}', '_blank')">📖 Ver catálogo completo en multiproductos.pro</button>
           </div>
